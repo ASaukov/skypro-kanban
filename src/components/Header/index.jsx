@@ -1,29 +1,35 @@
-import { useState } from "react"
+import { useState } from "react";
+import * as S from "./header.styled.js"
+import { Container, Hover03 } from "../../globalStyle.styled.js";
+
 
 export const Header = ({addCard}) => {
   const [isOpen, setIsOpen] = useState(false)
   const toggleOpenModul = () => {
-    setIsOpen(!isOpen)
+    setIsOpen((prev) => !prev)
   }
 
-    return (<header className="header">
-    <div className="container">
-      <div className="header__block">
-        <div className="header__logo _show _light">
+  return (
+  <S.Header>
+    <Container>
+      <S.HeaderBlock>
+        <S.HeaderLogo>
+        {/* _show _light для светлой темы */}
           <a href="" target="_self">
             <img src="public/logo.png" alt="logo" />
           </a>
-        </div>
-        <div className="header__logo _dark">
+        </S.HeaderLogo>
+        <S.HeaderLogo>
+        {/* _dark для темной темы */}
           <a href="" target="_self">
             <img src="public/logo_dark.png" alt="logo" />
           </a>
-        </div>
-        <nav className="header__nav">
-          <button onClick={addCard} className="header__btn-main-new _hover01"
+        </S.HeaderLogo>
+        <S.HeaderNav>
+          <S.HeaderBtnNew onClick={addCard}
             id="btnMainNew"><a>Создать новую задачу</a>
-          </button>
-          <a className="header__user _hover02" onClick={toggleOpenModul}>Ivan Ivanov</a>
+          </S.HeaderBtnNew>
+          <S.HeaderUser onClick={toggleOpenModul}>Ivan Ivanov</S.HeaderUser>
           {isOpen &&
             <div
               className="header__pop-user-set pop-user-set"
@@ -39,13 +45,13 @@ export const Header = ({addCard}) => {
                   name="checkbox"
                 />
               </div>
-              <button type="button" className="_hover03">
+              <Hover03 type="button">
                 <a href="#popExit">Выйти</a>
-              </button>
+              </Hover03>
             </div>
             }
-        </nav>
-      </div>
-    </div>
-  </header>)
+        </S.HeaderNav>
+      </S.HeaderBlock>
+    </Container>
+  </S.Header>)
 }

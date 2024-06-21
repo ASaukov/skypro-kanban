@@ -6,6 +6,7 @@ import { PopUser } from "./components/PopUser";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { cardList } from "./data.js";
+import { GlobalStyle, Wrapper } from "./globalStyle.styled.js";
 
 function App() {
   const [cards, setCards] = useState(cardList)
@@ -26,17 +27,22 @@ function App() {
     setIsLoading(true)
     setTimeout(() => {
       setIsLoading(false)
-    }, 1000);
+    }, 0);
   }, [])
 
   return (
-      <div className="wrapper">
-    <Header addCard={addCard}/>
-    {isLoading ? <p className="loader">....Loading</p> : <Main cards={cards}/>}
-    <PopBrowse/>
-    <PopNewCard/>
-    <PopUser/>
-      </div>
+<>
+  <GlobalStyle/>
+  <Wrapper>
+      <Header addCard={addCard}/>
+      {isLoading ? <p className="loader">....Loading</p> : <Main cards={cards}/>}
+      <PopBrowse/>
+      <PopNewCard/>
+      <PopUser/>
+  </Wrapper>
+</>
+
+      
   );
 }
 
