@@ -1,5 +1,5 @@
 
-import { Column } from "../Column"
+import { Column } from "../Column/column.jsx"
 import { statusList } from "../../data.js"
 import { Container } from "../../globalStyle.styled.js"
 import * as S from "./main.styled.js"

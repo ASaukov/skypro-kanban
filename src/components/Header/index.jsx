@@ -1,6 +1,6 @@
 import { useState } from "react";
 import * as S from "./header.styled.js"
-import { Container, Hover03 } from "../../globalStyle.styled.js";
+import { Container } from "../../globalStyle.styled.js";
 
 
 export const Header = ({addCard}) => {
@@ -31,24 +31,22 @@ export const Header = ({addCard}) => {
           </S.HeaderBtnNew>
           <S.HeaderUser onClick={toggleOpenModul}>Ivan Ivanov</S.HeaderUser>
           {isOpen &&
-            <div
-              className="header__pop-user-set pop-user-set"
-              id="user-set-target">
+            <S.HeaderPopUser id="user-set-target">
               <a href="">x</a>
-              <p className="pop-user-set__name">Ivan Ivanov</p>
-              <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-              <div className="pop-user-set__theme">
+              <S.PopUserName>Ivan Ivanov</S.PopUserName>
+              <S.PopUserMail>ivan.ivanov@gmail.com</S.PopUserMail>
+              <S.PopUserTheme>
                 <p>Темная тема</p>
                 <input
                   type="checkbox"
                   className="checkbox"
                   name="checkbox"
                 />
-              </div>
-              <Hover03 type="button">
+              </S.PopUserTheme>
+              <S.HeaderBtnExit type="button">
                 <a href="#popExit">Выйти</a>
-              </Hover03>
-            </div>
+              </S.HeaderBtnExit>
+            </S.HeaderPopUser>
             }
         </S.HeaderNav>
       </S.HeaderBlock>

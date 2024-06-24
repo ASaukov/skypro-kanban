@@ -11,6 +11,7 @@ import { GlobalStyle, Wrapper } from "./globalStyle.styled.js";
 function App() {
   const [cards, setCards] = useState(cardList)
   const [isLoading, setIsLoading] = useState(false)
+  
 
   const addCard = () => {
     const newCard = {

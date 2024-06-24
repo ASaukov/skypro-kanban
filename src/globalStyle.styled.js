@@ -72,14 +72,32 @@ export const Hover02 = css`
     }
 }`
 
-export const Hover03 = styled.button`
+export const Hover03 = css`
 &:hover {
   background-color: #33399b;
   color: #FFFFFF;
 
-  &:hover a {
-  color: #FFFFFF;
-}
+    &:hover a {
+      color: #FFFFFF;
+    }
 }
 `
+export const Orange = css`
+  background-color: #FFE4C2;
+  color: #FF6D00;
+`
 
+export const Green = css`
+  background-color: #B4FDD1;
+  color: #06B16E;
+`
+
+export const Purple = css`
+  background-color: #E9D4FF;
+  color: #9A48F1;
+`
+
+export const Gray = css`
+  background: #94A6BE;
+  color: #FFFFFF;
+`
