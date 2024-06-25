@@ -1,12 +1,12 @@
-import { Header } from "./components/Header";
-import { Main } from "./components/Main";
-import { PopBrowse } from "./components/PopBrowse";
-import { PopNewCard } from "./components/PopNewCard";
-import { PopUser } from "./components/PopUser";
+import { Header } from "./components/Header/header.jsx";
+import { PopBrowse } from "./components/PopBrowse/popbrowse.jsx";
+import { PopNewCard } from "./components/PopNewCard/popnewcard.jsx";
+import { PopUser } from "./components/PopUser/popuser.jsx";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { cardList } from "./data.js";
 import { GlobalStyle, Wrapper } from "./globalStyle.styled.js";
+import { Main } from "./components/Main/main.jsx";
 
 function App() {
   const [cards, setCards] = useState(cardList)

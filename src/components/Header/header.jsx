@@ -13,14 +13,12 @@ export const Header = ({addCard}) => {
   <S.Header>
     <Container>
       <S.HeaderBlock>
-        <S.HeaderLogo>
-        {/* _show _light для светлой темы */}
+        <S.HeaderLogo className="_show _light">
           <a href="" target="_self">
             <img src="public/logo.png" alt="logo" />
           </a>
         </S.HeaderLogo>
-        <S.HeaderLogo>
-        {/* _dark для темной темы */}
+        <S.HeaderLogo className="_dark">
           <a href="" target="_self">
             <img src="public/logo_dark.png" alt="logo" />
           </a>
