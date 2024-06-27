@@ -6,7 +6,7 @@ export const statusList = [
     "Готово",
 ]
 
-export const cardList = [
+export const Cardlist = [
     {
         id: 1,
         topic: "Web Design",
