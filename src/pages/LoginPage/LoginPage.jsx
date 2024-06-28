@@ -1,6 +1,15 @@
-import { ContainerSignin, Modal, ModalBlock, ModalBtnEnter, ModalFormLogin, ModalInput, ModalTtlH2, Wrapper } from "./loginpage.styled"
+import { Link, useNavigate } from "react-router-dom"
+import { ContainerSignin, Modal, ModalBlock, ModalBtnEnter, ModalFormGroup, ModalFormLogin, ModalInput, ModalTtlH2, Wrapper } from "./loginpage.styled"
+import { routes } from "../../router/routes"
 
-export const LoginPage = () => {
+export const LoginPage = ({setIsAuth}) => {
+	const navigate = useNavigate()
+
+	const handleLogin = (e) => {
+		e.preventDefault()
+		setIsAuth(true)
+		navigate(routes.main)
+	}
     return (
         <Wrapper>
         <ContainerSignin>
@@ -12,11 +21,11 @@ export const LoginPage = () => {
 					<ModalFormLogin id="formLogIn" action="#">
 						<ModalInput type="text" name="login" id="formlogin" placeholder="Эл. почта"/>
 						<ModalInput type="password" name="password" id="formpassword" placeholder="Пароль"/>
-						<ModalBtnEnter id="btnEnter"><a href="../main.html">Войти</a></ModalBtnEnter>
-						<div className="modal__form-group">
+						<ModalBtnEnter onClick={handleLogin} id="btnEnter">Войти</ModalBtnEnter>
+						<ModalFormGroup>
 							<p>Нужно зарегистрироваться?</p>
-							<a href="signup.html">Регистрируйтесь здесь</a>
-						</div>
+							<Link to={routes.registr}>Регистрируйтесь здесь</Link>
+						</ModalFormGroup>
 					</ModalFormLogin>
 				</ModalBlock>
             </Modal>
