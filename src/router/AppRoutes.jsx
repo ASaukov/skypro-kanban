@@ -7,6 +7,7 @@ import { LoginPage } from "../pages/LoginPage/LoginPage.jsx"
 import { RegistrPage } from "../pages/RegistrPage/RegistrPage.jsx"
 import { PrivateRoute } from "./Privateroute.jsx"
 import { useState } from "react"
+import { ExitPage } from "../pages/ExitPage/ExitPage.jsx"
 
 export const AppRoutes = () => {
     const [isAuth, setIsAuth] = useState(false)
@@ -14,8 +15,9 @@ export const AppRoutes = () => {
         <BrowserRouter>
             <Routes>
                 <Route element={<PrivateRoute isAuth={isAuth}/>}>
-                    <Route path={routes.main} element={<MainPage/>}/>
-                    
+                    <Route path={routes.main} element={<MainPage/>}>
+                        <Route path={routes.exit} element={<ExitPage/>}/>
+                    </Route>
                 </Route>
             <Route path={routes.login} element={<LoginPage setIsAuth={setIsAuth}/>}/>
             <Route path={routes.registr} element={<RegistrPage/>}/>

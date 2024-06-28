@@ -3,9 +3,10 @@ import { Header } from "../../components/Header/header.jsx"
 import { Main } from "../../components/Main/main.jsx"
 import { PopBrowse } from "../../components/PopBrowse/popbrowse"
 import { PopNewCard } from "../../components/PopNewCard/popnewcard.jsx"
-import { PopUser } from "../../components/PopUser/popuser.jsx"
+// import { PopUser } from "../../components/PopUser/popuser.jsx"
 import { Wrapper } from "../../globalStyle.styled.js"
 import { Cardlist } from "../../data.js"
+import { Outlet } from "react-router-dom"
 
 export const MainPage = () => {
 
@@ -32,11 +33,13 @@ export const MainPage = () => {
 
     return (
     <Wrapper>
+      
       <Header addCard={addCard}/>
       {isLoading ? <p className="loader">....Loading</p> : <Main cards={cards}/>}
+      <Outlet/>
       <PopBrowse/>
       <PopNewCard/>
-      <PopUser/>
+      {/* <PopUser/> */}
     </Wrapper>
     )
 }

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import * as S from "./header.styled.js"
 import { Container } from "../../globalStyle.styled.js";
+import { Link } from "react-router-dom";
+import { routes } from "../../router/routes.js";
 
 
 export const Header = ({addCard}) => {
@@ -42,7 +44,7 @@ export const Header = ({addCard}) => {
                 />
               </S.PopUserTheme>
               <S.HeaderBtnExit type="button">
-                <a href="#popExit">Выйти</a>
+                <Link to={routes.exit}>Выйти</Link>
               </S.HeaderBtnExit>
             </S.HeaderPopUser>
             }
