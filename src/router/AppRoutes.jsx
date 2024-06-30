@@ -8,6 +8,7 @@ import { RegistrPage } from "../pages/RegistrPage/RegistrPage.jsx"
 import { PrivateRoute } from "./Privateroute.jsx"
 import { useState } from "react"
 import { ExitPage } from "../pages/ExitPage/ExitPage.jsx"
+import { ViewCard } from "../pages/ViewCard/ViewCard.jsx"
 
 export const AppRoutes = () => {
     const [isAuth, setIsAuth] = useState(false)
@@ -16,7 +17,8 @@ export const AppRoutes = () => {
             <Routes>
                 <Route element={<PrivateRoute isAuth={isAuth}/>}>
                     <Route path={routes.main} element={<MainPage/>}>
-                        <Route path={routes.exit} element={<ExitPage/>}/>
+                        <Route path={routes.exit} element={<ExitPage setIsAuth={setIsAuth}/>}/>
+                        <Route path={routes.card} element={<ViewCard/>}/>
                     </Route>
                 </Route>
             <Route path={routes.login} element={<LoginPage setIsAuth={setIsAuth}/>}/>

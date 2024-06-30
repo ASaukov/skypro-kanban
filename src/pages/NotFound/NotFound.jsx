@@ -1,5 +1,7 @@
+import { Img } from "./notfound.styled"
+
 export const NotFound = () => {
     return (
-        <h1>404</h1>
+        <Img src="public/404.png" alt="404" /> 
     )
 }

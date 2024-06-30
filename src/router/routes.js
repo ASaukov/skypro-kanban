@@ -3,5 +3,6 @@ export const routes = {
     login: "/login",
     registr: "/registr",
     exit: "/exit",
+    card: "/card/:id",
     notFound: "*",
 }

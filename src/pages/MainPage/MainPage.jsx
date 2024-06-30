@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { Header } from "../../components/Header/header.jsx"
 import { Main } from "../../components/Main/main.jsx"
-import { PopBrowse } from "../../components/PopBrowse/popbrowse"
 import { PopNewCard } from "../../components/PopNewCard/popnewcard.jsx"
 // import { PopUser } from "../../components/PopUser/popuser.jsx"
 import { Wrapper } from "../../globalStyle.styled.js"
@@ -15,7 +14,7 @@ export const MainPage = () => {
 
     const addCard = () => {
         const newCard = {
-          id: cards.length + 1,
+            id: cards.length + 1,
             topic: "Web Design",
             title: "Новая задача",
             date: "13.06.24",
@@ -37,9 +36,7 @@ export const MainPage = () => {
       <Header addCard={addCard}/>
       {isLoading ? <p className="loader">....Loading</p> : <Main cards={cards}/>}
       <Outlet/>
-      <PopBrowse/>
       <PopNewCard/>
-      {/* <PopUser/> */}
     </Wrapper>
     )
 }
