@@ -15,6 +15,7 @@ export const Column = ({title, cards}) => {
             title={card.title}
             topic={card.topic}
             date={card.date}
+            id={card.id}
         />
       )
     })}
