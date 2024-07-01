@@ -61,7 +61,15 @@ export const ModalBlock = styled.div`
     }
   `
 
-export const ModalTtlH2 =styled.div `
+export const ModalTtl =styled.div`
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: -0.6px;
+    margin-bottom: 20px;
+  `
+  export const H2 = styled.h2`
     text-align: center;
     font-size: 20px;
     font-weight: 700;

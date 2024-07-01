@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { ContainerSignin, Modal, ModalBlock, ModalFormGroup, ModalFormLogin, ModalInput, ModalTtlH2, Wrapper } from "../LoginPage/loginpage.styled"
+import { ContainerSignin, H2, Modal, ModalBlock, ModalFormGroup, ModalFormLogin, ModalInput, ModalTtl, Wrapper } from "../LoginPage/loginpage.styled"
 import { ModalBtnSignupEnt } from "./registrpage.styled"
 import { routes } from "../../router/routes"
 
@@ -9,9 +9,9 @@ export const RegistrPage = () => {
         <ContainerSignin>
             <Modal>
 				<ModalBlock>
-					<ModalTtlH2>
-						<h2>Регистрация</h2>
-					</ModalTtlH2>
+					<ModalTtl>
+						<H2>Регистрация</H2>
+					</ModalTtl>
 					<ModalFormLogin id="formLogUp" action="#">
 						<ModalInput type="text" name="first-name" id="first-name" placeholder="Имя"/>
 						<ModalInput type="text" name="login" id="loginReg" placeholder="Эл. почта"/>
