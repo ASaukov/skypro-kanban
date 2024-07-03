@@ -1,6 +1,8 @@
 import { useState } from "react";
 import * as S from "./header.styled.js"
 import { Container } from "../../globalStyle.styled.js";
+import { Link } from "react-router-dom";
+import { routes } from "../../router/routes.js";
 
 
 export const Header = ({addCard}) => {
@@ -30,7 +32,6 @@ export const Header = ({addCard}) => {
           <S.HeaderUser onClick={toggleOpenModul}>Ivan Ivanov</S.HeaderUser>
           {isOpen &&
             <S.HeaderPopUser id="user-set-target">
-              <a href="">x</a>
               <S.PopUserName>Ivan Ivanov</S.PopUserName>
               <S.PopUserMail>ivan.ivanov@gmail.com</S.PopUserMail>
               <S.PopUserTheme>
@@ -42,7 +43,7 @@ export const Header = ({addCard}) => {
                 />
               </S.PopUserTheme>
               <S.HeaderBtnExit type="button">
-                <a href="#popExit">Выйти</a>
+                <Link to={routes.exit}>Выйти</Link>
               </S.HeaderBtnExit>
             </S.HeaderPopUser>
             }
