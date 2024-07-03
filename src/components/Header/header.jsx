@@ -32,7 +32,6 @@ export const Header = ({addCard}) => {
           <S.HeaderUser onClick={toggleOpenModul}>Ivan Ivanov</S.HeaderUser>
           {isOpen &&
             <S.HeaderPopUser id="user-set-target">
-              <a href="">x</a>
               <S.PopUserName>Ivan Ivanov</S.PopUserName>
               <S.PopUserMail>ivan.ivanov@gmail.com</S.PopUserMail>
               <S.PopUserTheme>
