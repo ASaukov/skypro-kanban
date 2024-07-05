@@ -10,18 +10,18 @@ import { ExitPage } from "../pages/ExitPage/ExitPage.jsx"
 import { ViewCard } from "../pages/ViewCard/viewcard.jsx"
 
 export const AppRoutes = () => {
-    const [isAuth, setIsAuth] = useState(false)
+    const [user, setUser] = useState(null)
     return (
         <BrowserRouter>
             <Routes>
-                <Route element={<PrivateRoute isAuth={isAuth}/>}>
-                    <Route path={routes.main} element={<MainPage/>}>
-                        <Route path={routes.exit} element={<ExitPage setIsAuth={setIsAuth}/>}/>
+                <Route element={<PrivateRoute user={user}/>}>
+                    <Route path={routes.main} element={<MainPage user={user} setUser={setUser}/>}>
+                        <Route path={routes.exit} element={<ExitPage setUser={setUser}/>}/>
                         <Route path={routes.card} element={<ViewCard/>}/>
                     </Route>
                 </Route>
-            <Route path={routes.login} element={<LoginPage setIsAuth={setIsAuth}/>}/>
-            <Route path={routes.registr} element={<RegistrPage/>}/>
+            <Route path={routes.login} element={<LoginPage setUser={setUser}/>}/>
+            <Route path={routes.registr} element={<RegistrPage setUser={setUser}/>}/>
             <Route path={routes.notFound} element={<NotFound/>}/>
             </Routes>
         </BrowserRouter>

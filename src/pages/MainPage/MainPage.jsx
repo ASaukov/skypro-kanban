@@ -3,13 +3,16 @@ import { Header } from "../../components/Header/header.jsx"
 import { Main } from "../../components/Main/main.jsx"
 import { PopNewCard } from "../../components/PopNewCard/popnewcard.jsx"
 import { Wrapper } from "../../globalStyle.styled.js"
-import { Cardlist } from "../../data.js"
+// import { Cardlist } from "../../data.js"
 import { Outlet } from "react-router-dom"
+import { getTasks } from "../../api/tasks.js"
+import { ErrorMessage, Loader } from "./mainpage.styled.js"
 
-export const MainPage = () => {
+export const MainPage = ({user, setUser}) => {
 
-    const [cards, setCards] = useState(Cardlist)
-    const [isLoading, setIsLoading] = useState(false)
+    const [cards, setCards] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState('')
 
     const addCard = () => {
         const newCard = {
@@ -23,17 +26,25 @@ export const MainPage = () => {
       }
     
       useEffect(() => {
-        setIsLoading(true)
-        setTimeout(() => {
+        getTasks(user.token)
+        .then((res) => {
+          setCards(res.tasks)
+        })
+        .catch((error) => {
+          // error.message = "Не удалось загрузить данные, попробуйте позже"
+          console.log(error.message);
+          setError(error.message);
+        })
+        .finally (() => {
           setIsLoading(false)
-        }, 0);
+        })
       }, [])
 
     return (
     <Wrapper>
-      
-      <Header addCard={addCard}/>
-      {isLoading ? <p className="loader">....Loading</p> : <Main cards={cards}/>}
+      <Header addCard={addCard} setUser={setUser}/>
+      {isLoading ? <Loader>Loading...</Loader> : <Main cards={cards}/>}
+      <ErrorMessage>{error}</ErrorMessage>
       <Outlet/>
       <PopNewCard/>
     </Wrapper>
