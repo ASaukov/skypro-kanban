@@ -11,11 +11,11 @@ export const Column = ({title, cards}) => {
     {cards.map((card) => {
       return (
         <CardsItem 
-            key={card.id}
+            key={card._id}
             title={card.title}
             topic={card.topic}
             date={card.date}
-            id={card.id}
+            id={card._id}
         />
       )
     })}
