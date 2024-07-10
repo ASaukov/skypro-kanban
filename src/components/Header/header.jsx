@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { routes } from "../../router/routes.js";
 
 
-export const Header = ({addCard}) => {
+export const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
   const toggleOpenModul = () => {
     setIsOpen((prev) => !prev)
@@ -26,8 +26,8 @@ export const Header = ({addCard}) => {
           </a>
         </S.HeaderLogo>
         <S.HeaderNav>
-          <S.HeaderBtnNew onClick={addCard}
-            id="btnMainNew"><a>Создать новую задачу</a>
+          <S.HeaderBtnNew id="btnMainNew">
+            <Link to={routes.newcard}><a>Создать новую задачу</a></Link>
           </S.HeaderBtnNew>
           <S.HeaderUser onClick={toggleOpenModul}>Ivan Ivanov</S.HeaderUser>
           {isOpen &&

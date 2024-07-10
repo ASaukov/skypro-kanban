@@ -1,9 +1,10 @@
 import { Calendar } from "../Calendar/calendar";
+import * as S from "./popnewcard.styled"
 
 export const PopNewCard = () => {
   return (
-    <div className="pop-new-card" id="popNewCard">
-      <div className="pop-new-card__container">
+    <S.PopNewCard id="popNewCard">
+      <S.PopNewCardContainer>
         <div className="pop-new-card__block">
           <div className="pop-new-card__content">
             <h3 className="pop-new-card__ttl">Создание задачи</h3>
@@ -62,7 +63,7 @@ export const PopNewCard = () => {
             </button>
           </div>
         </div>
-      </div>
-    </div>
+      </S.PopNewCardContainer>
+    </S.PopNewCard>
   );
 };

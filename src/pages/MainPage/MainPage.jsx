@@ -3,7 +3,6 @@ import { Header } from "../../components/Header/header.jsx"
 import { Main } from "../../components/Main/main.jsx"
 import { PopNewCard } from "../../components/PopNewCard/popnewcard.jsx"
 import { Wrapper } from "../../globalStyle.styled.js"
-// import { Cardlist } from "../../data.js"
 import { Outlet } from "react-router-dom"
 import { getTasks } from "../../api/tasks.js"
 import { ErrorMessage, Loader } from "./mainpage.styled.js"
@@ -31,7 +30,6 @@ export const MainPage = ({user, setUser}) => {
           setCards(res.tasks)
         })
         .catch((error) => {
-          // error.message = "Не удалось загрузить данные, попробуйте позже"
           console.log(error.message);
           setError(error.message);
         })
