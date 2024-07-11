@@ -305,8 +305,8 @@ body {
   justify-content: center;
   background: rgba(0, 0, 0, 0.4);
 } */
-.pop-new-card__block {
-  display: block;
+/* .pop-new-card__block {
+ display: block;
   margin: 0 auto;
   background-color: #FFFFFF;
   max-width: 630px;
@@ -314,19 +314,19 @@ body {
   padding: 40px 30px 48px;
   border-radius: 10px;
   border: 0.7px solid #D4DBE5;
-  position: relative;
-}
-.pop-new-card__content {
+   position: relative;
+} */
+/* .pop-new-card__content {
   display: block;
   text-align: left;
-}
-.pop-new-card__ttl {
+} */
+/* .pop-new-card__ttl {
   color: #000;
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
   margin-bottom: 20px;
-}
+} */
 .pop-new-card__close {
   position: absolute;
   top: 20px;

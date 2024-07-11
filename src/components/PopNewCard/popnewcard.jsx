@@ -5,9 +5,9 @@ export const PopNewCard = () => {
   return (
     <S.PopNewCard id="popNewCard">
       <S.PopNewCardContainer>
-        <div className="pop-new-card__block">
-          <div className="pop-new-card__content">
-            <h3 className="pop-new-card__ttl">Создание задачи</h3>
+        <S.PopNewCardBlock>
+          <S.PopNewCardContent>
+            <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
             <a href="#" className="pop-new-card__close">
               &#10006;
             </a>
@@ -61,8 +61,8 @@ export const PopNewCard = () => {
             <button className="form-new__create _hover01" id="btnCreate">
               Создать задачу
             </button>
-          </div>
-        </div>
+          </S.PopNewCardContent>
+        </S.PopNewCardBlock>
       </S.PopNewCardContainer>
     </S.PopNewCard>
   );
