@@ -44,7 +44,7 @@ export const PopNewCard = () => {
             </S.PopNewCardWrap>
             <S.PopNewCardCategories>
               <S.CategoriesP>Категория</S.CategoriesP>
-              <div className="categories__themes">
+              <S.CategoriesThemes>
                 <S.CategoriesOrangeActive>
                   <S.OrangeCat>Web Design</S.OrangeCat>
                 </S.CategoriesOrangeActive>
@@ -54,7 +54,7 @@ export const PopNewCard = () => {
                 <S.CategoriesPurple>
                   <S.PurpleCat>Copywriting</S.PurpleCat>
                 </S.CategoriesPurple>
-              </div>
+              </S.CategoriesThemes>
             </S.PopNewCardCategories>
             <S.FormNewCreate id="btnCreate">
               Создать задачу

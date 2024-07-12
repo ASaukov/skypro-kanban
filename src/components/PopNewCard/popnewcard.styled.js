@@ -185,6 +185,13 @@ export const CategoriesP = styled.p`
   line-height: 1;
 `
 
+export const CategoriesThemes = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+`
+
 const CategoriesTheme = css`
   display: inline-block;
   width: auto;

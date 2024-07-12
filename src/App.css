@@ -521,16 +521,16 @@ body {
 /* .categories {
   margin-bottom: 20px;
 } */
-.categories__themes {
+/* .categories__themes {
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: flex-start;
-}
+} */
 /* .categories__p {
   margin-bottom: 14px;
 } */
-.categories__theme {
+/* .categories__theme {
   display: inline-block;
   width: auto;
   height: 30px;
@@ -544,7 +544,7 @@ body {
   font-weight: 600;
   line-height: 14px;
   white-space: nowrap;
-}
+} */
 
 .pop-browse {
   /* display: none; */
