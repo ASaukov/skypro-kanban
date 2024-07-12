@@ -3,9 +3,12 @@ import * as S from "./header.styled.js"
 import { Container } from "../../globalStyle.styled.js";
 import { Link } from "react-router-dom";
 import { routes } from "../../router/routes.js";
+import { useUserContext } from "../../context/useUserContext.js";
 
 
 export const Header = () => {
+
+  const {user} = useUserContext()
   const [isOpen, setIsOpen] = useState(false)
   const toggleOpenModul = () => {
     setIsOpen((prev) => !prev)
@@ -29,11 +32,11 @@ export const Header = () => {
           <S.HeaderBtnNew id="btnMainNew">
             <Link to={routes.newcard}><a>Создать новую задачу</a></Link>
           </S.HeaderBtnNew>
-          <S.HeaderUser onClick={toggleOpenModul}>Ivan Ivanov</S.HeaderUser>
+          <S.HeaderUser onClick={toggleOpenModul}>{user.name}</S.HeaderUser>
           {isOpen &&
             <S.HeaderPopUser id="user-set-target">
-              <S.PopUserName>Ivan Ivanov</S.PopUserName>
-              <S.PopUserMail>ivan.ivanov@gmail.com</S.PopUserMail>
+              <S.PopUserName>{user.name}</S.PopUserName>
+              <S.PopUserMail>{user.login}</S.PopUserMail>
               <S.PopUserTheme>
                 <p>Темная тема</p>
                 <input

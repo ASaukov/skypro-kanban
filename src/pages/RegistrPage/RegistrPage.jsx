@@ -4,8 +4,10 @@ import { ModalBtnSignupEnt } from "./registrpage.styled"
 import { routes } from "../../router/routes"
 import { getUser } from "../../api/newUser"
 import { useState } from "react"
+import { useUserContext } from "../../context/useUserContext"
 
-export const RegistrPage = ({setUser}) => {
+export const RegistrPage = () => {
+	const {login} = useUserContext()
 	const [error, setError] = useState('');
 
 	const [formData, setFormData] = useState({
@@ -37,7 +39,7 @@ export const RegistrPage = ({setUser}) => {
 
 		getUser(formData).then ((res) => {
 			console.log(res.user);
-			setUser(res.user)
+			login(res.user)
 			navigate(routes.login)
 		})
 		.catch((error) => {

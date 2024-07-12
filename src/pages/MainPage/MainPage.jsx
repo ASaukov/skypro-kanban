@@ -6,8 +6,11 @@ import { Wrapper } from "../../globalStyle.styled.js"
 import { Outlet } from "react-router-dom"
 import { getTasks } from "../../api/tasks.js"
 import { ErrorMessage, Loader } from "./mainpage.styled.js"
+import { useUserContext } from "../../context/useUserContext.js"
 
-export const MainPage = ({user, setUser}) => {
+export const MainPage = () => {
+
+  const {user} = useUserContext()
 
     const [cards, setCards] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -36,11 +39,11 @@ export const MainPage = ({user, setUser}) => {
         .finally (() => {
           setIsLoading(false)
         })
-      }, [])
+      }, [user.token])
 
     return (
     <Wrapper>
-      <Header addCard={addCard} setUser={setUser}/>
+      <Header addCard={addCard}/>
       {isLoading ? <Loader>Loading...</Loader> : <Main cards={cards}/>}
       <ErrorMessage>{error}</ErrorMessage>
       <Outlet/>

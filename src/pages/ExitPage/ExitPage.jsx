@@ -1,11 +1,14 @@
 import { Link, useNavigate } from "react-router-dom"
 import { routes } from "../../router/routes"
 import * as S from "./exitpage.styled"
+import { useUserContext } from "../../context/useUserContext"
 
-export const ExitPage = ({setUser}) => {
+export const ExitPage = () => {
+
+  const {logout} = useUserContext()
   const nav = useNavigate()
   const handleLogaut = () => {
-    setUser(null)
+    logout()
     nav(routes.login)
   }
     return (

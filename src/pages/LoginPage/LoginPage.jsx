@@ -3,9 +3,11 @@ import { ContainerSignin, H2, Modal, ModalBlock, ModalBtnEnter, ModalFormGroup, 
 import { routes } from "../../router/routes"
 import { useState } from "react"
 import { signIn } from "../../api/user"
+import { useUserContext } from "../../context/useUserContext"
 
-export const LoginPage = ({setUser}) => {
+export const LoginPage = () => {
 
+	const {login} = useUserContext()
 	const [error, setError] = useState('');
 
 	const [formData, setFormData] = useState({
@@ -33,7 +35,7 @@ export const LoginPage = ({setUser}) => {
 		
 		signIn(formData).then ((res) => {
 			console.log(res.user)
-			setUser(res.user)
+			login(res.user)
 			navigate(routes.main)
 		})
 		.catch((error) => {
