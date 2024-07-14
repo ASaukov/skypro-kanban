@@ -1,4 +1,6 @@
 
+import { Link } from "react-router-dom";
+import { routes } from "../../router/routes";
 import { Calendar } from "../Calendar/calendar";
 import * as S from "./popnewcard.styled"
 
@@ -9,9 +11,11 @@ export const PopNewCard = () => {
         <S.PopNewCardBlock>
           <S.PopNewCardContent>
             <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
+            <Link to={routes.main}>
             <S.PopNewCardClose href="#">
             &#10006;
             </S.PopNewCardClose>
+            </Link>
             <S.PopNewCardWrap>
               <S.PopNewCardForm
                 id="formNewCard"

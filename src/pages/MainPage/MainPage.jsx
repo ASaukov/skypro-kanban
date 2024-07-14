@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { Header } from "../../components/Header/header.jsx"
 import { Main } from "../../components/Main/main.jsx"
-import { PopNewCard } from "../../components/PopNewCard/popnewcard.jsx"
 import { Wrapper } from "../../globalStyle.styled.js"
 import { Outlet } from "react-router-dom"
 import { getTasks } from "../../api/tasks.js"
@@ -47,7 +46,6 @@ export const MainPage = () => {
       {isLoading ? <Loader>Loading...</Loader> : <Main cards={cards}/>}
       <ErrorMessage>{error}</ErrorMessage>
       <Outlet/>
-      <PopNewCard/>
     </Wrapper>
     )
 }
