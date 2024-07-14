@@ -1,7 +1,5 @@
 import { useState } from "react"
 
-
-// ???
 const getUserFromLocalStorage = () => {
     try {
         const user = JSON.parse(localStorage.getItem("user"));
@@ -10,7 +8,6 @@ const getUserFromLocalStorage = () => {
         return null;
     }
 };
-// ???
 
 
 export const useUser = () => {
@@ -20,13 +17,9 @@ export const useUser = () => {
         setUser(userData);
     };
 
-
-// ???
     const logout = () => {
         setUser(null);
     };
-// ???
-
 
     return {user, login, logout}
 }

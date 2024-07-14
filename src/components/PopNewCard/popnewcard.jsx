@@ -10,7 +10,7 @@ export const PopNewCard = () => {
           <S.PopNewCardContent>
             <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
             <S.PopNewCardClose href="#">
-              &#10006;
+            &#10006;
             </S.PopNewCardClose>
             <S.PopNewCardWrap>
               <S.PopNewCardForm

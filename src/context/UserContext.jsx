@@ -6,7 +6,6 @@ export const UserContext = createContext(null);
 export const UserProvider = ({children}) => {
     const {user, login, logout} = useUser();
 
-    // ???? Из разбора ДЗ
     useEffect(() => {
         if (user) {
             localStorage.setItem("user", JSON.stringify(user));
@@ -14,8 +13,6 @@ export const UserProvider = ({children}) => {
             localStorage.removeItem("user");
         }
     }, [user]);
-    // ?????
-
 
     return <UserContext.Provider value={{user, login, logout}}>
         {children}
