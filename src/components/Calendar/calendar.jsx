@@ -1,10 +1,22 @@
+
+import { formatDate } from "date-fns/format"
+import { ru } from "date-fns/locale"
+import { useState } from "react"
+import { DayPicker } from "react-day-picker"
+
 export const Calendar = () => {
+  const [selected, setSelected] = useState()
     return (
     <div className="pop-new-card__calendar calendar">
     <p className="calendar__ttl subttl">Даты</p>
     <div className="calendar__block">
-      <div className="calendar__nav">
-        <div className="calendar__month">Сентябрь 2023</div>
+      <DayPicker 
+        mode="single" 
+        selected={selected} 
+        onSelect={setSelected}
+        locale={ru} />
+      {/* <div className="calendar__nav">
+        <div className="calendar__month">Июль 2024</div>
         <div className="nav__actions">
           <div className="nav__action" data-action="prev">
             <svg
@@ -103,12 +115,13 @@ export const Calendar = () => {
         type="hidden"
         id="datepick_value"
         value="08.09.2023"
-      />
+      /> */}
       <div className="calendar__period">
-        <p className="calendar__p date-end">
-          Срок исполнения:{" "}
-          <span className="date-control">09.09.23</span>
-        </p>
+        {!selected ? <p className="calendar__p date-end">Выберите срок исполнения</p> : 
+        <p className="calendar__p date-end">Cрок исполнения:
+          <span className="date-control"> {formatDate(selected, "dd.MM.yy", {locale: ru})}</span>
+        </p>}
+        
       </div>
     </div>
   </div>)
