@@ -26,7 +26,7 @@ ${Calendar}
 
 export const CalendarTtl = styled.p`
   margin-bottom: 14px;
-  padding: 0 7px;
+  padding: 0 5px;
 
   ${Subttl}
   @media screen and (max-width: 660px) {
@@ -43,13 +43,38 @@ export const CalendarContent = styled.div`
 `
 
 export const CalendarPeriod = styled.div`
-  padding: 0 7px;
+  padding: 0 3px;
+`
+export const CalendarPDateEnd = styled.p`
+  color: #94A6BE;
+  font-size: 10px;
+  line-height: 1;
+
+  & span {
+    color: #000000
+    }
 `
 
-
 export const StyledDayPicker = styled(DayPicker)`
+margin: 0;
 --rdp-cell-size: 24px;
 --rdp-caption-font-size: 14px;
 --rdp-accent-color: #94a6be;
+& div {
+    color: #94a6be;
+    text-transform: capitalize;
+  }
+  & td {
+    font-size: 10px;
+    color: #94a6be;
+  }
 
+  & th {
+    color: #94a6be;
+    font-size: 10px;
+  }
+
+  & svg {
+    color: #94a6be;
+  }
 `

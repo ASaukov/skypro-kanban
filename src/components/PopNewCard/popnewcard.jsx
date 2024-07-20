@@ -1,10 +1,20 @@
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { routes } from "../../router/routes";
 import { Calendar } from "../Calendar/calendar";
 import * as S from "./popnewcard.styled"
+import { useState } from "react";
 
 export const PopNewCard = () => {
+  const navigation = useNavigate();
+  const [cardData, setCardData] = useState ({
+    title: "",
+    topic: "",
+    status: "",
+    description: "",
+    date: "",
+  });
+  
   return (
     <S.PopNewCard id="popNewCard">
       <S.PopNewCardContainer>
