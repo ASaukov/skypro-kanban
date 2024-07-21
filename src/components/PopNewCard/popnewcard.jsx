@@ -7,10 +7,11 @@ import { useState } from "react";
 
 export const PopNewCard = () => {
   const navigation = useNavigate();
+  const [error, setError] = useState("");
   const [cardData, setCardData] = useState ({
     title: "",
     topic: "",
-    status: "",
+    status: "Без статуса",
     description: "",
     date: "",
   });
