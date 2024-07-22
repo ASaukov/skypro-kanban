@@ -15,7 +15,23 @@ export const PopNewCard = () => {
     description: "",
     date: "",
   });
-  
+
+   const handleData = (e) => {
+    const {name, value} = e.target;
+    setCardData({...cardData, [name]: value});
+   };
+
+   const haddleNewCard = (e) => {
+    e.preventDefault();
+    if(cardData.title === "" || cardData.topic === "" || cardData.description === "") {
+      setError("Заполните все данные задачи");
+      return;
+    }
+    appTask(cardData)
+    .then((res) => {
+      
+    })
+   }
   return (
     <S.PopNewCard id="popNewCard">
       <S.PopNewCardContainer>
@@ -71,6 +87,7 @@ export const PopNewCard = () => {
                 </S.CategoriesPurple>
               </S.CategoriesThemes>
             </S.PopNewCardCategories>
+            {error && <p>{error}</p>}
             <S.FormNewCreate id="btnCreate">
               Создать задачу
             </S.FormNewCreate>

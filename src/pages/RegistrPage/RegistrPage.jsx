@@ -52,7 +52,7 @@ export const RegistrPage = () => {
         console.log(res.user);
         login(res.user);
         navigate(routes.login);
-      })
+      })  
       .catch((error) => {
         setError(error.message);
       });

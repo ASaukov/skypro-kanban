@@ -1,6 +1,9 @@
-export const appTask = async ({title, topic, status,description, date}) => {
+export const appTask = async (token, {title, topic, status,description, date}) => {
     const response = await fetch("https://wedev-api.sky.pro/api/kanban", {
         method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
         body: JSON.stringify({
             title,
             topic,
