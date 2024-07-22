@@ -4,8 +4,11 @@ import { routes } from "../../router/routes";
 import { Calendar } from "../Calendar/calendar";
 import * as S from "./popnewcard.styled"
 import { useState } from "react";
+import { addTask } from "../../api/newTask";
+import { useTaskContext } from "../../context/TaskContext/useTaskContext";
 
 export const PopNewCard = () => {
+  const {setCard} = useTaskContext();
   const navigation = useNavigate();
   const [error, setError] = useState("");
   const [cardData, setCardData] = useState ({
@@ -21,15 +24,19 @@ export const PopNewCard = () => {
     setCardData({...cardData, [name]: value});
    };
 
-   const haddleNewCard = (e) => {
+   const handleNewCard = (e) => {
     e.preventDefault();
     if(cardData.title === "" || cardData.topic === "" || cardData.description === "") {
       setError("Заполните все данные задачи");
       return;
     }
-    appTask(cardData)
+    addTask(cardData)
     .then((res) => {
-      
+      setCard(res.tasks);
+      navigation(routes.main)
+    })
+    .catch((error) => {
+      setError(error.message);
     })
    }
   return (
@@ -54,7 +61,9 @@ export const PopNewCard = () => {
                   </S.Subttl>
                   <S.FormNewInput
                     type="text"
-                    name="name"
+                    name="title"
+                    value={cardData.title}
+                    onChange={handleData}
                     id="formTitle"
                     placeholder="Введите название задачи..."
                     autoFocus
@@ -65,7 +74,9 @@ export const PopNewCard = () => {
                     Описание задачи
                   </S.Subttl>
                   <S.FormNewArea
-                    name="text"
+                    name="description"
+                    value={cardData.description}
+                    onChange={handleData}
                     id="textArea"
                     placeholder="Введите описание задачи..."
                   ></S.FormNewArea>
@@ -88,7 +99,7 @@ export const PopNewCard = () => {
               </S.CategoriesThemes>
             </S.PopNewCardCategories>
             {error && <p>{error}</p>}
-            <S.FormNewCreate id="btnCreate">
+            <S.FormNewCreate onClick={handleNewCard} id="btnCreate">
               Создать задачу
             </S.FormNewCreate>
           </S.PopNewCardContent>
