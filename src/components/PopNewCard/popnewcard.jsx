@@ -6,11 +6,15 @@ import * as S from "./popnewcard.styled"
 import { useState } from "react";
 import { addTask } from "../../api/newTask";
 import { useTaskContext } from "../../context/TaskContext/useTaskContext";
+import { useUserContext } from "../../context/UserContext/useUserContext";
 
 export const PopNewCard = () => {
-  const {setCard} = useTaskContext();
+  const {user} = useUserContext();
+  const setTasks = useTaskContext();
   const navigation = useNavigate();
   const [error, setError] = useState("");
+  const [selected, setSelected] = useState();
+  
   const [cardData, setCardData] = useState ({
     title: "",
     topic: "",
@@ -19,20 +23,27 @@ export const PopNewCard = () => {
     date: "",
   });
 
+  const newCard = {
+    title: cardData.title,
+    topic: cardData.topic,
+    description: cardData.description,
+    date: selected,
+  };
+
    const handleData = (e) => {
     const {name, value} = e.target;
     setCardData({...cardData, [name]: value});
    };
 
-   const handleNewCard = (e) => {
+   const handleNewCard = async (e) => {
     e.preventDefault();
-    if(cardData.title === "" || cardData.topic === "" || cardData.description === "") {
+    if(cardData.title === "" || cardData.description === "" || cardData.date === "") {
       setError("Заполните все данные задачи");
       return;
     }
-    addTask(cardData)
+    await addTask(newCard, user.token)
     .then((res) => {
-      setCard(res.tasks);
+      setTasks(res.tasks);
       navigation(routes.main)
     })
     .catch((error) => {
@@ -46,9 +57,7 @@ export const PopNewCard = () => {
           <S.PopNewCardContent>
             <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
             <Link to={routes.main}>
-            <S.PopNewCardClose href="#">
-            &#10006;
-            </S.PopNewCardClose>
+            <S.PopNewCardClose href="#">&#10006;</S.PopNewCardClose>
             </Link>
             <S.PopNewCardWrap>
               <S.PopNewCardForm
@@ -70,9 +79,7 @@ export const PopNewCard = () => {
                   />
                 </S.FormNewBlock>
                 <S.FormNewBlock>
-                  <S.Subttl htmlFor="textArea">
-                    Описание задачи
-                  </S.Subttl>
+                  <S.Subttl htmlFor="textArea">Описание задачи</S.Subttl>
                   <S.FormNewArea
                     name="description"
                     value={cardData.description}
@@ -82,12 +89,15 @@ export const PopNewCard = () => {
                   ></S.FormNewArea>
                 </S.FormNewBlock>
               </S.PopNewCardForm>
-              <Calendar />
+              <Calendar selected={selected} setSelected={setSelected}/>
             </S.PopNewCardWrap>
             <S.PopNewCardCategories>
               <S.CategoriesP>Категория</S.CategoriesP>
               <S.CategoriesThemes>
-                <S.CategoriesOrangeActive>
+                <S.CategoriesOrangeActive
+                onChange={handleData}
+                name="topic"
+                value="">
                   <S.OrangeCat>Web Design</S.OrangeCat>
                 </S.CategoriesOrangeActive>
                 <S.CategoriesGreen>

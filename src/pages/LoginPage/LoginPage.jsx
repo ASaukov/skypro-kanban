@@ -45,7 +45,6 @@ export const LoginPage = () => {
 
     signIn(formData)
       .then((res) => {
-        console.log(res.user);
         login(res.user);
         navigate(routes.main);
       })

@@ -27,11 +27,11 @@ export const Header = () => {
             </a>
           </S.HeaderLogo>
           <S.HeaderNav>
+          <Link to={routes.newcard}>
             <S.HeaderBtnNew id="btnMainNew">
-              <Link to={routes.newcard}>
-                <a>Создать новую задачу</a>
-              </Link>
+                Создать новую задачу
             </S.HeaderBtnNew>
+            </Link>
             <S.HeaderUser onClick={toggleOpenModul}>{user.name}</S.HeaderUser>
             {isOpen && (
               <S.HeaderPopUser id="user-set-target">

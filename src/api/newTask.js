@@ -1,4 +1,4 @@
-export const addTask = async (token, {title, topic, status,description, date}) => {
+export const addTask = async (token, {title, topic, status, description, date}) => {
     const response = await fetch("https://wedev-api.sky.pro/api/kanban", {
         method: "POST",
         headers: {

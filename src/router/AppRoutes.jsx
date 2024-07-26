@@ -15,7 +15,7 @@ export const AppRoutes = () => {
   return (
     <UserProvider>
       <BrowserRouter>
-        <Routes>
+        <Routes> 
           <Route element={<PrivateRoute />}>
             <Route path={routes.main} element={<MainPage />}>
               <Route path={routes.exit} element={<ExitPage />} />
