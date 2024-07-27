@@ -37,7 +37,7 @@ export const PopNewCard = () => {
 
    const handleNewCard = async (e) => {
     e.preventDefault();
-    if(cardData.title === "" || cardData.description === "" || cardData.date === "") {
+    if(cardData.title === "" || cardData.description === "") {
       setError("Заполните все данные задачи");
       return;
     }
