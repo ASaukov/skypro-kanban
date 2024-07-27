@@ -6,29 +6,19 @@ import { Outlet } from "react-router-dom";
 import { getTasks } from "../../api/tasks.js";
 import { ErrorMessage, Loader } from "./mainpage.styled.js";
 import { useUserContext } from "../../context/UserContext/useUserContext.js";
+import { useTaskContext } from "../../context/TaskContext/useTaskContext.js";
 
 export const MainPage = () => {
   const { user } = useUserContext();
 
-  const [cards, setCards] = useState([]);
+  const {tasks, setTasks} = useTaskContext();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-
-  const addCard = () => {
-    const newCard = {
-      id: cards.length + 1,
-      topic: "Web Design",
-      title: "Новая задача",
-      date: "13.06.24",
-      status: "Без статуса",
-    };
-    setCards([...cards, newCard]);
-  };
 
   useEffect(() => {
     getTasks(user.token)
       .then((res) => {
-        setCards(res.tasks);
+        setTasks(res.tasks);
       })
       .catch((error) => {
         console.log(error.message);
@@ -41,8 +31,8 @@ export const MainPage = () => {
 
   return (
     <Wrapper>
-      <Header addCard={addCard} />
-      {isLoading ? <Loader>Loading...</Loader> : <Main cards={cards} />}
+      <Header  />
+      {isLoading ? <Loader>Loading...</Loader> : <Main cards={tasks} />}
       <ErrorMessage>{error}</ErrorMessage>
       <Outlet />
     </Wrapper>

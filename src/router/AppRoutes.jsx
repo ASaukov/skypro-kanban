@@ -10,10 +10,12 @@ import { ExitPage } from "../pages/ExitPage/ExitPage.jsx";
 import { ViewCard } from "../pages/ViewCard/viewcard.jsx";
 import { NewCard } from "../pages/NewCard/newcard.jsx";
 import { UserProvider } from "../context/UserContext/UserContext.jsx";
+import { TaskProvider } from "../context/TaskContext/TaskContext.jsx";
 
 export const AppRoutes = () => {
   return (
     <UserProvider>
+      <TaskProvider>
       <BrowserRouter>
         <Routes> 
           <Route element={<PrivateRoute />}>
@@ -28,6 +30,7 @@ export const AppRoutes = () => {
           <Route path={routes.notFound} element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      </TaskProvider>
     </UserProvider>
   );
 };
