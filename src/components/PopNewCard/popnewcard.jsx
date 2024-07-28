@@ -96,9 +96,6 @@ export const PopNewCard = () => {
             <S.PopNewCardCategories>
               <S.CategoriesP>Категория</S.CategoriesP>
               <S.CategoriesThemes>
-                {/* <div className="prod_checbox"> */}
-                
-                  
                   <input
                     onChange={handleData}
                     type="radio"
@@ -108,9 +105,6 @@ export const PopNewCard = () => {
                     checked={cardData.topic === "Web Design"}
                   />
                   <label htmlFor="radio1">Web Design</label>
-                  
-               
-                  
                   <input
                     onChange={handleData}
                     type="radio"
@@ -120,9 +114,6 @@ export const PopNewCard = () => {
                     checked={cardData.topic === "Research"}
                   />
                   <label htmlFor="radio2">Research</label>
-                  
-                 
-                  
                   <input
                     onChange={handleData}
                     type="radio"
@@ -132,24 +123,6 @@ export const PopNewCard = () => {
                     checked={cardData.topic === "Copywriting"}
                   />
                   <label htmlFor="radio3">Copywriting</label>
-                  
-                
-                {/* </div> */}
-                {/* <S.CategoriesOrangeActive>
-                  <input
-                    type="radio"
-                    onChange={handleData}
-                    name="topic"
-                    value={cardData.topic}
-                  />
-                  <S.OrangeCat>Web Design</S.OrangeCat>
-                </S.CategoriesOrangeActive>
-                <S.CategoriesGreen>
-                  <S.GreenCat>Research</S.GreenCat>
-                </S.CategoriesGreen>
-                <S.CategoriesPurple>
-                  <S.PurpleCat>Copywriting</S.PurpleCat>
-                </S.CategoriesPurple> */}
               </S.CategoriesThemes>
             </S.PopNewCardCategories>
             {error && <p>{error}</p>}

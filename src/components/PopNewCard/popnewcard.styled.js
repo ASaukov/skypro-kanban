@@ -190,87 +190,36 @@ export const CategoriesThemes = styled.div`
   flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: flex-start;
-  
+
   & input[type="radio"] {
     display: none;
   }
-& label {
-  width: auto;
-  height: 30px;
-  padding: 8px 20px;
-  border-radius: 24px;
-  margin-right: 7px; 
-  opacity: 0.4;
-}
-
-& label[htmlFor="radio1"] {
-  ${Orange};
-}
-  
-  /* display: inline-block; */
-  /* flex-direction: row; */
-  /* column-gap: 10px; */
-  /* & input[type="radio"] {
-    display: none;
+  & input[type="radio"]:checked + label {
+    opacity: 1;
   }
 
-  & input[type="radio"]:checked+label {
-  opacity: 1 !important;
-  } */
-`;
-
-export const CategoriesTheme = styled.div`
-  /* display: inline-block; */
-  width: auto;
-  height: 30px;
-  padding: 8px 20px;
-  border-radius: 24px;
-  margin-right: 7px;
-
+  & label {
+    display: inline-block;
+    width: auto;
+    height: 30px;
+    padding: 8px 20px;
+    border-radius: 24px;
+    margin-right: 7px;
+    font-weight: 700;
+    font-size: 14px;
     opacity: 0.4;
-  
-  
-  & input[type="radio"] {
-    display: none;
-  }
-  & span:hover {
-    opacity: 1;
-    cursor: pointer;
-  }
-  
-  & label:hover {
-    cursor: pointer;
-  }
-
-  & input[type="radio"]:checked+span {
-    opacity: 1;
+    &[For="radio1"] {
+      ${Orange}
+    }
+    &[For="radio2"] {
+      ${Green}
+    }
+    &[For="radio3"] {
+      ${Purple}
+    }
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
   }
 `;
-export const CategoriesOrange = styled.div`
-  ${CategoriesTheme};
-  ${Orange};
-  
-`;
-
-export const CategoriesGreen = styled.div`
-  ${CategoriesTheme};
-  ${Green};
-`;
-
-export const CategoriesPurple = styled.div`
-  ${CategoriesTheme};
-  ${Purple};
-`;
-
-// export const OrangeCat = styled.label`
-//   ${Orange}
-  
-// `;
-
-// export const GreenCat = styled.label`
-//   ${Green}
-// `;
-
-// export const PurpleCat = styled.label`
-//   ${Purple}
-// `;
