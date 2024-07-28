@@ -9,7 +9,7 @@ import { useUserContext } from "../../context/UserContext/useUserContext";
 
 export const PopNewCard = () => {
   const { user } = useUserContext();
-  const {setTasks} = useTaskContext();
+  const { setTasks } = useTaskContext();
   const navigation = useNavigate();
   const [error, setError] = useState("");
   const [selected, setSelected] = useState("");
@@ -36,18 +36,18 @@ export const PopNewCard = () => {
 
   const handleNewCard = async (e) => {
     e.preventDefault();
-    if (cardData.title === "") {
+    if (cardData.title.trim() === "") {
       setError("Введите название задачи");
       return;
     }
-    if (cardData.description === "") {
+    if (cardData.description.trim() === "") {
       setError("Заполните описание задачи");
       return;
     }
-    if (cardData.date === "") {
-      setError("Выберите дату");
-      return;
-    }
+    // if (cardData.date === "") {
+    //   setError("Выберите дату");
+    //   return;
+    // }
     await addTask(user.token, newCard)
       .then((res) => {
         setTasks(res.tasks);
@@ -96,39 +96,45 @@ export const PopNewCard = () => {
             <S.PopNewCardCategories>
               <S.CategoriesP>Категория</S.CategoriesP>
               <S.CategoriesThemes>
-                <div className="prod_checbox">
-                  <div className="radio-toolbar">
-                    <input
-                      onChange={handleData}
-                      type="radio"
-                      id="radio1"
-                      name="topic"
-                      value="Web Design"
-                      checked={cardData.topic === "Web Design"}
-                    />
-                    <label htmlFor="radio1">Web Design</label>
-
-                    <input
-                      onChange={handleData}
-                      type="radio"
-                      id="radio2"
-                      name="topic"
-                      value="Research"
-                      checked={cardData.topic === "Research"}
-                    />
-                    <label htmlFor="radio2">Research</label>
-
-                    <input
-                      onChange={handleData}
-                      type="radio"
-                      id="radio3"
-                      name="topic"
-                      value="Copywriting"
-                      checked={cardData.topic === "Copywriting"}
-                    />
-                    <label htmlFor="radio3">Copywriting</label>
-                  </div>
-                </div>
+                {/* <div className="prod_checbox"> */}
+                
+                  
+                  <input
+                    onChange={handleData}
+                    type="radio"
+                    id="radio1"
+                    name="topic"
+                    value="Web Design"
+                    checked={cardData.topic === "Web Design"}
+                  />
+                  <label htmlFor="radio1">Web Design</label>
+                  
+               
+                  
+                  <input
+                    onChange={handleData}
+                    type="radio"
+                    id="radio2"
+                    name="topic"
+                    value="Research"
+                    checked={cardData.topic === "Research"}
+                  />
+                  <label htmlFor="radio2">Research</label>
+                  
+                 
+                  
+                  <input
+                    onChange={handleData}
+                    type="radio"
+                    id="radio3"
+                    name="topic"
+                    value="Copywriting"
+                    checked={cardData.topic === "Copywriting"}
+                  />
+                  <label htmlFor="radio3">Copywriting</label>
+                  
+                
+                {/* </div> */}
                 {/* <S.CategoriesOrangeActive>
                   <input
                     type="radio"

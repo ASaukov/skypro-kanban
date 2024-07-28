@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Green, Hover01, Orange, Purple } from "../../globalStyle.styled";
 
 export const PopNewCard = styled.div`
@@ -11,7 +11,7 @@ export const PopNewCard = styled.div`
   top: 0;
   left: 0;
   z-index: 6;
-`
+`;
 export const PopNewCardContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -22,24 +22,24 @@ export const PopNewCardContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.4);
-`
+`;
 
 export const PopNewCardBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   max-width: 630px;
   width: 100%;
   padding: 40px 30px 48px;
   border-radius: 10px;
-  border: 0.7px solid #D4DBE5;
+  border: 0.7px solid #d4dbe5;
   position: relative;
-`
+`;
 
 export const PopNewCardContent = styled.div`
-display: block;
-text-align: left;
-`
+  display: block;
+  text-align: left;
+`;
 
 export const PopNewCardTtl = styled.h3`
   color: #000;
@@ -47,44 +47,44 @@ export const PopNewCardTtl = styled.h3`
   font-weight: 600;
   line-height: 24px;
   margin-bottom: 20px;
-`
+`;
 
 export const PopNewCardClose = styled.span`
   position: absolute;
   top: 20px;
   right: 30px;
-  color: #94A6BE;
+  color: #94a6be;
   cursor: pointer;
 
   &:hover {
     color: #000000;
   }
-`
+`;
 
 export const PopNewCardWrap = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-`
+`;
 
 export const PopNewCardForm = styled.form`
   max-width: 370px;
   width: 100%;
   display: block;
   margin-bottom: 20px;
-`
+`;
 
 export const FormNewBlock = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 export const Subttl = styled.label`
   color: #000;
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
-`
+`;
 
 export const FormNewInput = styled.input`
   width: 100%;
@@ -102,7 +102,7 @@ export const FormNewInput = styled.input`
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94A6BE;
+    color: #94a6be;
     letter-spacing: -0.14px;
   }
 
@@ -110,10 +110,10 @@ export const FormNewInput = styled.input`
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94A6BE;
+    color: #94a6be;
     letter-spacing: -0.14px;
   }
-`
+`;
 
 export const FormNewArea = styled.textarea`
   width: 100%;
@@ -133,34 +133,34 @@ export const FormNewArea = styled.textarea`
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94A6BE;
+    color: #94a6be;
     letter-spacing: -0.14px;
-}
+  }
 
   &::placeholder {
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94A6BE;
+    color: #94a6be;
     letter-spacing: -0.14px;
-}
-`
+  }
+`;
 
 export const FormNewCreate = styled.button`
   width: 132px;
   height: 30px;
-  background-color: #565EEF;
+  background-color: #565eef;
   border-radius: 4px;
   border: 0;
   outline: none;
   font-size: 14px;
   font-weight: 500;
   line-height: 1;
-  color: #FFFFFF;
+  color: #ffffff;
   float: right;
 
   ${Hover01}
-`
+`;
 
 export const PopNewCardCategories = styled.div`
   position: static;
@@ -175,7 +175,7 @@ export const PopNewCardCategories = styled.div`
   order: 2;
   flex-grow: 0;
   margin-bottom: 20px;
-`
+`;
 
 export const CategoriesP = styled.p`
   margin-bottom: 14px;
@@ -183,49 +183,94 @@ export const CategoriesP = styled.p`
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
-`
+`;
 
 export const CategoriesThemes = styled.div`
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: flex-start;
-`
+  
+  & input[type="radio"] {
+    display: none;
+  }
+& label {
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px; 
+  opacity: 0.4;
+}
 
-const CategoriesTheme = css`
-  display: inline-block;
+& label[htmlFor="radio1"] {
+  ${Orange};
+}
+  
+  /* display: inline-block; */
+  /* flex-direction: row; */
+  /* column-gap: 10px; */
+  /* & input[type="radio"] {
+    display: none;
+  }
+
+  & input[type="radio"]:checked+label {
+  opacity: 1 !important;
+  } */
+`;
+
+export const CategoriesTheme = styled.div`
+  /* display: inline-block; */
   width: auto;
   height: 30px;
   padding: 8px 20px;
   border-radius: 24px;
   margin-right: 7px;
-  opacity: 0.4;
-`
 
-export const CategoriesOrangeActive = styled.div`
+    opacity: 0.4;
+  
+  
+  & input[type="radio"] {
+    display: none;
+  }
+  & span:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  
+  & label:hover {
+    cursor: pointer;
+  }
+
+  & input[type="radio"]:checked+span {
+    opacity: 1;
+  }
+`;
+export const CategoriesOrange = styled.div`
   ${CategoriesTheme};
   ${Orange};
-  opacity: 1 !important;
-`
+  
+`;
 
 export const CategoriesGreen = styled.div`
   ${CategoriesTheme};
   ${Green};
-`
+`;
 
 export const CategoriesPurple = styled.div`
   ${CategoriesTheme};
   ${Purple};
-`
+`;
 
-export const OrangeCat = styled.p`
-${Orange}
-`
+// export const OrangeCat = styled.label`
+//   ${Orange}
+  
+// `;
 
-export const GreenCat = styled.p`
-${Green}
-`
+// export const GreenCat = styled.label`
+//   ${Green}
+// `;
 
-export const PurpleCat = styled.p`
-${Purple}
-`
+// export const PurpleCat = styled.label`
+//   ${Purple}
+// `;
