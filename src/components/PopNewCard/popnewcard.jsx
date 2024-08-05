@@ -1,68 +1,137 @@
+import { Link, useNavigate } from "react-router-dom";
+import { routes } from "../../router/routes";
 import { Calendar } from "../Calendar/calendar";
+import * as S from "./popnewcard.styled";
+import { useState } from "react";
+import { addTask } from "../../api/newTask";
+import { useTaskContext } from "../../context/TaskContext/useTaskContext";
+import { useUserContext } from "../../context/UserContext/useUserContext";
 
 export const PopNewCard = () => {
+  const { user } = useUserContext();
+  const { setTasks } = useTaskContext();
+  const navigation = useNavigate();
+  const [error, setError] = useState("");
+  const [selected, setSelected] = useState("");
+
+  const [cardData, setCardData] = useState({
+    title: "",
+    topic: "Web Design",
+    status: "Без статуса",
+    description: "",
+    date: "",
+  });
+
+  const newCard = {
+    title: cardData.title,
+    topic: cardData.topic,
+    description: cardData.description,
+    date: selected,
+  };
+
+  const handleData = (e) => {
+    const { name, value } = e.target;
+    setCardData({ ...cardData, [name]: value });
+  };
+
+  const handleNewCard = async (e) => {
+    e.preventDefault();
+    if (cardData.title.trim() === "") {
+      setError("Введите название задачи");
+      return;
+    }
+    if (cardData.description.trim() === "") {
+      setError("Заполните описание задачи");
+      return;
+    }
+    // if (cardData.date === "") {
+    //   setError("Выберите дату");
+    //   return;
+    // }
+    await addTask(user.token, newCard)
+      .then((res) => {
+        setTasks(res.tasks);
+        navigation(routes.main);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
   return (
-    <div className="pop-new-card" id="popNewCard">
-      <div className="pop-new-card__container">
-        <div className="pop-new-card__block">
-          <div className="pop-new-card__content">
-            <h3 className="pop-new-card__ttl">Создание задачи</h3>
-            <a href="#" className="pop-new-card__close">
-              &#10006;
-            </a>
-            <div className="pop-new-card__wrap">
-              <form
-                className="pop-new-card__form form-new"
-                id="formNewCard"
-                action="#"
-              >
-                <div className="form-new__block">
-                  <label htmlFor="formTitle" className="subttl">
-                    Название задачи
-                  </label>
-                  <input
-                    className="form-new__input"
+    <S.PopNewCard id="popNewCard">
+      <S.PopNewCardContainer>
+        <S.PopNewCardBlock>
+          <S.PopNewCardContent>
+            <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
+            <Link to={routes.main}>
+              <S.PopNewCardClose href="#">&#10006;</S.PopNewCardClose>
+            </Link>
+            <S.PopNewCardWrap>
+              <S.PopNewCardForm id="formNewCard" action="#">
+                <S.FormNewBlock>
+                  <S.Subttl htmlFor="formTitle">Название задачи</S.Subttl>
+                  <S.FormNewInput
                     type="text"
-                    name="name"
+                    name="title"
+                    value={cardData.title}
+                    onChange={handleData}
                     id="formTitle"
                     placeholder="Введите название задачи..."
                     autoFocus
                   />
-                </div>
-                <div className="form-new__block">
-                  <label htmlFor="textArea" className="subttl">
-                    Описание задачи
-                  </label>
-                  <textarea
-                    className="form-new__area"
-                    name="text"
+                </S.FormNewBlock>
+                <S.FormNewBlock>
+                  <S.Subttl htmlFor="textArea">Описание задачи</S.Subttl>
+                  <S.FormNewArea
+                    name="description"
+                    value={cardData.description}
+                    onChange={handleData}
                     id="textArea"
                     placeholder="Введите описание задачи..."
-                  ></textarea>
-                </div>
-              </form>
-              <Calendar />
-            </div>
-            <div className="pop-new-card__categories categories">
-              <p className="categories__p subttl">Категория</p>
-              <div className="categories__themes">
-                <div className="categories__theme _orange _active-category">
-                  <p className="_orange">Web Design</p>
-                </div>
-                <div className="categories__theme _green">
-                  <p className="_green">Research</p>
-                </div>
-                <div className="categories__theme _purple">
-                  <p className="_purple">Copywriting</p>
-                </div>
-              </div>
-            </div>
-            <button className="form-new__create _hover01" id="btnCreate">
+                  ></S.FormNewArea>
+                </S.FormNewBlock>
+              </S.PopNewCardForm>
+              <Calendar selected={selected} setSelected={setSelected} />
+            </S.PopNewCardWrap>
+            <S.PopNewCardCategories>
+              <S.CategoriesP>Категория</S.CategoriesP>
+              <S.CategoriesThemes>
+                  <input
+                    onChange={handleData}
+                    type="radio"
+                    id="radio1"
+                    name="topic"
+                    value="Web Design"
+                    checked={cardData.topic === "Web Design"}
+                  />
+                  <label htmlFor="radio1">Web Design</label>
+                  <input
+                    onChange={handleData}
+                    type="radio"
+                    id="radio2"
+                    name="topic"
+                    value="Research"
+                    checked={cardData.topic === "Research"}
+                  />
+                  <label htmlFor="radio2">Research</label>
+                  <input
+                    onChange={handleData}
+                    type="radio"
+                    id="radio3"
+                    name="topic"
+                    value="Copywriting"
+                    checked={cardData.topic === "Copywriting"}
+                  />
+                  <label htmlFor="radio3">Copywriting</label>
+              </S.CategoriesThemes>
+            </S.PopNewCardCategories>
+            {error && <p>{error}</p>}
+            <S.FormNewCreate onClick={handleNewCard} id="btnCreate">
               Создать задачу
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+            </S.FormNewCreate>
+          </S.PopNewCardContent>
+        </S.PopNewCardBlock>
+      </S.PopNewCardContainer>
+    </S.PopNewCard>
   );
 };

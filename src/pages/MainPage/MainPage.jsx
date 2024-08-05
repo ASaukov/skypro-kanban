@@ -1,52 +1,40 @@
-import { useEffect, useState } from "react"
-import { Header } from "../../components/Header/header.jsx"
-import { Main } from "../../components/Main/main.jsx"
-import { PopNewCard } from "../../components/PopNewCard/popnewcard.jsx"
-import { Wrapper } from "../../globalStyle.styled.js"
-// import { Cardlist } from "../../data.js"
-import { Outlet } from "react-router-dom"
-import { getTasks } from "../../api/tasks.js"
-import { ErrorMessage, Loader } from "./mainpage.styled.js"
+import { useEffect, useState } from "react";
+import { Header } from "../../components/Header/header.jsx";
+import { Main } from "../../components/Main/main.jsx";
+import { Wrapper } from "../../globalStyle.styled.js";
+import { Outlet } from "react-router-dom";
+import { getTasks } from "../../api/tasks.js";
+import { ErrorMessage, Loader } from "./mainpage.styled.js";
+import { useUserContext } from "../../context/UserContext/useUserContext.js";
+import { useTaskContext } from "../../context/TaskContext/useTaskContext.js";
 
-export const MainPage = ({user, setUser}) => {
+export const MainPage = () => {
+  const { user } = useUserContext();
 
-    const [cards, setCards] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
-    const [error, setError] = useState('')
+  const {tasks, setTasks} = useTaskContext();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
-    const addCard = () => {
-        const newCard = {
-            id: cards.length + 1,
-            topic: "Web Design",
-            title: "Новая задача",
-            date: "13.06.24",
-            status: "Без статуса",
-        }
-        setCards([...cards, newCard])
-      }
-    
-      useEffect(() => {
-        getTasks(user.token)
-        .then((res) => {
-          setCards(res.tasks)
-        })
-        .catch((error) => {
-          // error.message = "Не удалось загрузить данные, попробуйте позже"
-          console.log(error.message);
-          setError(error.message);
-        })
-        .finally (() => {
-          setIsLoading(false)
-        })
-      }, [])
+  useEffect(() => {
+    getTasks(user.token)
+      .then((res) => {
+        setTasks(res.tasks);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setError(error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [user.token]);
 
-    return (
+  return (
     <Wrapper>
-      <Header addCard={addCard} setUser={setUser}/>
-      {isLoading ? <Loader>Loading...</Loader> : <Main cards={cards}/>}
+      <Header  />
+      {isLoading ? <Loader>Loading...</Loader> : <Main cards={tasks} />}
       <ErrorMessage>{error}</ErrorMessage>
-      <Outlet/>
-      <PopNewCard/>
+      <Outlet />
     </Wrapper>
-    )
-}
+  );
+};
