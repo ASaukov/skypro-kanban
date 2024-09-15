@@ -101,3 +101,8 @@ export const Gray = css`
   background: #94A6BE;
   color: #FFFFFF;
 `
+export const colorTheme = ($color) => css`
+${() => $color === "Web Design" && Orange};
+${() => $color === "Research" && Green};
+${() => $color === "Copywriting" && Purple};
+`
