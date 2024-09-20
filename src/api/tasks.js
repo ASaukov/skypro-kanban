@@ -41,3 +41,16 @@ export const deleteTask = async (token, id) => {
   }
   return response.json();
 };
+
+export const getTaskId = async (token, id) => {
+  const response = await fetch(apiUrl + id, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if(!response.ok) {
+    throw new Error("Не удалось получить данные");
+  }
+  return response.json();
+};

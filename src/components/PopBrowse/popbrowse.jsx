@@ -4,7 +4,7 @@ import { routes } from "../../router/routes";
 import * as S from "./popbrowse.styled";
 
 import { useTaskContext } from "../../context/TaskContext/useTaskContext";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { statusList } from "../../data";
 import { changeTask, deleteTask } from "../../api/tasks";
 import { useUserContext } from "../../context/UserContext/useUserContext";
@@ -14,36 +14,19 @@ export const PopBrowse = () => {
   const { tasks, setTasks } = useTaskContext();
   const { user } = useUserContext();
   const nav = useNavigate();
+  const openTask = tasks.find(task => task._id === id);
 
+  console.log(tasks)
   const [isEdit, setIsEdit] = useState(false);
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(new Date(openTask.date));
   const [error, setError] = useState("");
   const [editTask, setEditTask] = useState({
-    title: "",
-    topic: "",
-    status: "",
-    description: "",
-    date: new Date(),
+    title: openTask.title,
+    topic: openTask.topic,
+    status: openTask.status,
+    description: openTask.description,
   });
 
-  const openTask = tasks.find((task) => task._id === id);
-
-  useEffect(() => {
-    if (openTask) {
-      setEditTask({
-        ...editTask,
-        title: openTask.title,
-        topic: openTask.topic,
-        status: openTask.status,
-        description: openTask.description,
-        date: openTask.date,
-      });
-      setSelected(new Date(openTask.date));
-      console.log(openTask.date)
-    } else {
-      nav(routes.main);
-    }
-  }, [isEdit]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,13 +35,12 @@ export const PopBrowse = () => {
 
   const editCart = async (e) => {
     e.preventDefault();
-    console.log(openTask)
     if (editTask.description.trim() === "") {
         setError("Заполните описание задачи");
         return;
       }
     try {
-    await changeTask(user.token, id, editTask)
+    await changeTask(user.token, id, {...editTask, date: selected},)
     .then((res) => {
       setTasks(res.tasks);
       nav(routes.main);
@@ -83,6 +65,11 @@ export const PopBrowse = () => {
   const handleToggleEdit = () => {
     setIsEdit(!isEdit);
   };
+
+  const onChangeDate = (e) => {
+    if(!isEdit) return
+    setSelected(e);
+  }
 
   return (
     <S.PopBrowse id="popBrowse">
@@ -143,7 +130,7 @@ export const PopBrowse = () => {
               </S.PopBrowseForm>
               <Calendar
                 selected={selected}
-                setSelected={isEdit && setSelected}
+                setSelected={onChangeDate}
               />
             </S.PopBrowseWrap>
             {!isEdit ? (

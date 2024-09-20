@@ -11,6 +11,10 @@ export const PopBrowse = styled.div`
   top: 0;
   left: 0;
   z-index: 7;
+
+  @media screen and (max-width: 660px) {
+    top: 70px;
+  }
 `;
 
 export const PopBrowseContainer = styled.div`
@@ -23,6 +27,11 @@ export const PopBrowseContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.4);
+
+  @media screen and (max-width: 660px) {
+    padding: 0;
+    justify-content: flex-start;
+  }
 `;
 
 export const PopBrowseBlock = styled.div`
@@ -35,6 +44,14 @@ export const PopBrowseBlock = styled.div`
   border-radius: 10px;
   border: 0.7px solid #d4dbe5;
   position: relative;
+
+  @media screen and (max-width: 660px) {
+    border-radius: 0;
+  }
+
+  @media screen and (max-width: 495px) {
+    padding: 20px 16px 32px;
+  }
 `;
 
 export const PopBrowseContent = styled.div`
@@ -61,7 +78,7 @@ export const PopBrowseTtl = styled.h3`
 `;
 
 export const CategoriesTheme = styled.div`
-display: inline-block;
+  display: inline-block;
   width: auto;
   height: 30px;
   padding: 8px 20px;
@@ -69,20 +86,24 @@ display: inline-block;
   margin-right: 7px;
   opacity: 1 !important;
 
-  ${({$color}) => colorTheme($color)}
+  ${({ $color }) => colorTheme($color)}
 
   p {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 14px;
-  white-space: nowrap;
-}
-`
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    white-space: nowrap;
+  }
+`;
 
 export const PopBrowseWrap = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
+  @media screen and (max-width: 660px) {
+    display: block;
+  }
 `;
 
 export const PopBrowseForm = styled.form`
@@ -90,6 +111,9 @@ export const PopBrowseForm = styled.form`
   width: 100%;
   display: block;
   margin-bottom: 20px;
+
+  @media screen and (max-width: 495px) {
+  }
 `;
 
 export const PopBrowseBtnBrowse = styled.div`
@@ -103,6 +127,11 @@ export const PopBrowseBtnBrowse = styled.div`
     margin-bottom: 10px;
     padding: 0 14px;
     margin-right: 8px;
+
+    @media screen and (max-width: 495px) {
+      width: 100%;
+      height: 40px;
+    }
   }
 `;
 
@@ -117,6 +146,12 @@ export const PopBrowseBtnEdit = styled.div`
     margin-bottom: 10px;
     padding: 0 14px;
     margin-right: 8px;
+
+    @media screen and (max-width: 495px) {
+      width: 100%;
+      height: 40px;
+      margin-right: 0px;
+    }
   }
 `;
 
@@ -133,18 +168,16 @@ export const StatusP = styled.p`
 `;
 
 export const StatusThemes = styled.div`
-
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
-  
 `;
 
 export const StatusThemeTask = styled.div`
-border-radius: 24px;
+  border-radius: 24px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
-  color: #94A6BE;
+  color: #94a6be;
   max-width: max-content;
   padding: 11px 14px 10px;
   margin-right: 7px;
@@ -156,10 +189,9 @@ border-radius: 24px;
     letter-spacing: -0.14px;
   }
   ${Gray}
-`
+`;
 
 export const StatusTheme = styled.div`
-
   & input[type="radio"] {
     display: none;
   }
@@ -168,26 +200,23 @@ export const StatusTheme = styled.div`
     ${Gray}
   }
 
-
   & label {
     display: inline-block;
     border-radius: 24px;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
-  color: #94a6be;
-  padding: 11px 14px 10px;
-  margin-right: 7px;
-  /* margin-bottom: 7px; */
+    border: 0.7px solid rgba(148, 166, 190, 0.4);
+    color: #94a6be;
+    padding: 11px 14px 10px;
+    margin-right: 7px;
+    /* margin-bottom: 7px; */
 
     font-size: 14px;
     line-height: 1;
     letter-spacing: -0.14px;
-    
+
     &:hover {
       cursor: pointer;
     }
   }
-
-  
 `;
 
 export const FormBrowseBlock = styled.div`
@@ -238,8 +267,8 @@ export const FormBrowseArea = styled.textarea`
 `;
 
 export const FormBrowseAreaEdit = styled(FormBrowseArea)`
-background-color: transparent;
-`
+  background-color: transparent;
+`;
 
 export const BtnGroup = styled.div`
   button {
@@ -304,6 +333,6 @@ export const BtnEdit = styled.button`
 `;
 
 export const Error = styled.p`
-color: purple;
-text-align: center
-`
+  color: purple;
+  text-align: center;
+`;

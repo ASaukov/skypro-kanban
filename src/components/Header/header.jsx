@@ -37,10 +37,10 @@ export const Header = () => {
               <S.HeaderPopUser id="user-set-target">
                 <S.PopUserName>{user.name}</S.PopUserName>
                 <S.PopUserMail>{user.login}</S.PopUserMail>
-                <S.PopUserTheme>
+                {/* <S.PopUserTheme>
                   <p>Темная тема</p>
                   <input type="checkbox" className="checkbox" name="checkbox" />
-                </S.PopUserTheme>
+                </S.PopUserTheme> */}
                 <S.HeaderBtnExit type="button">
                   <Link to={routes.exit}>Выйти</Link>
                 </S.HeaderBtnExit>
