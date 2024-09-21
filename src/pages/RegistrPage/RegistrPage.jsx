@@ -36,8 +36,14 @@ export const RegistrPage = () => {
 
   const handleRegistr = (e) => {
     e.preventDefault();
-    if (formData.login === "" || formData.name === "" || formData.password === "") {
-      setError("Введенные вами данные не корректны. Чтобы завершить регистрацию, заполните все поля в форме.");
+    if (
+      formData.login === "" ||
+      formData.name === "" ||
+      formData.password === ""
+    ) {
+      setError(
+        "Введенные вами данные не корректны. Чтобы завершить регистрацию, заполните все поля в форме."
+      );
       return;
     }
 
@@ -46,7 +52,7 @@ export const RegistrPage = () => {
         console.log(res.user);
         login(res.user);
         navigate(routes.login);
-      })  
+      })
       .catch((error) => {
         setError(error.message);
       });
@@ -61,7 +67,8 @@ export const RegistrPage = () => {
               <H2>Регистрация</H2>
             </ModalTtl>
             <ModalFormLogin onSubmit={handleRegistr} id="formLogUp" action="#">
-              <ModalInput $error={error}
+              <ModalInput
+                $error={error}
                 value={formData.name}
                 onChange={handleInput}
                 type="text"
@@ -69,7 +76,8 @@ export const RegistrPage = () => {
                 id="first-name"
                 placeholder="Имя"
               />
-              <ModalInput $error={error}
+              <ModalInput
+                $error={error}
                 value={formData.login}
                 onChange={handleInput}
                 type="text"
@@ -77,7 +85,8 @@ export const RegistrPage = () => {
                 id="loginReg"
                 placeholder="Эл. почта"
               />
-              <ModalInput $error={error}
+              <ModalInput
+                $error={error}
                 value={formData.password}
                 onChange={handleInput}
                 type="password"
@@ -86,7 +95,12 @@ export const RegistrPage = () => {
                 placeholder="Пароль"
               />
               {error && <ErrorP>{error}</ErrorP>}
-              <ModalBtnSignupEnt $error={error} disabled={error} onClick={handleRegistr} id="SignUpEnter">
+              <ModalBtnSignupEnt
+                $error={error}
+                disabled={error}
+                onClick={handleRegistr}
+                id="SignUpEnter"
+              >
                 Зарегистрироваться{" "}
               </ModalBtnSignupEnt>
               <ModalFormGroup>

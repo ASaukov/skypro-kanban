@@ -17,7 +17,6 @@ export const PopNewCard = styled.div`
   }
 `;
 
-
 export const PopNewCardContainer = styled.div`
   width: 100%;
   height: 100%;

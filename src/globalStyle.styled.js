@@ -35,32 +35,33 @@ body {
   height: 100%;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   color: #000000;
-}`
+}`;
 
 export const Wrapper = styled.div`
   max-width: 100%;
   width: 100vw;
   min-height: 100vh;
   overflow: hidden;
-  background-color: #F1F1F1;
-`
+  background-color: #f1f1f1;
+`;
 
 export const Container = styled.div`
   max-width: 1260px;
   width: 100%;
   margin: 0 auto;
   padding: 0 30px;
-  
+
   @media screen and (max-width: 495px) {
     width: 100%;
     padding: 0 16px;
   }
-  `
+`;
 
 export const Hover01 = css`
   &:hover {
-  background-color: ${props => props.$error ? '""' : '#33399b'};
-}`
+    background-color: ${(props) => (props.$error ? '""' : "#33399b")};
+  }
+`;
 
 export const Hover02 = css`
   &:hover {
@@ -70,39 +71,40 @@ export const Hover02 = css`
       border-left-color: #33399b;
       border-bottom-color: #33399b;
     }
-}`
+  }
+`;
 
 export const Hover03 = css`
-&:hover {
-  background-color: #33399b;
-  color: #FFFFFF;
+  &:hover {
+    background-color: #33399b;
+    color: #ffffff;
 
     &:hover a {
-      color: #FFFFFF;
+      color: #ffffff;
     }
-}
-`
+  }
+`;
 export const Orange = css`
-  background-color: #FFE4C2;
-  color: #FF6D00;
-`
+  background-color: #ffe4c2;
+  color: #ff6d00;
+`;
 
 export const Green = css`
-  background-color: #B4FDD1;
-  color: #06B16E;
-`
+  background-color: #b4fdd1;
+  color: #06b16e;
+`;
 
 export const Purple = css`
-  background-color: #E9D4FF;
-  color: #9A48F1;
-`
+  background-color: #e9d4ff;
+  color: #9a48f1;
+`;
 
 export const Gray = css`
-  background: #94A6BE;
-  color: #FFFFFF;
-`
+  background: #94a6be;
+  color: #ffffff;
+`;
 export const colorTheme = ($color) => css`
-${() => $color === "Web Design" && Orange};
-${() => $color === "Research" && Green};
-${() => $color === "Copywriting" && Purple};
-`
+  ${() => $color === "Web Design" && Orange};
+  ${() => $color === "Research" && Green};
+  ${() => $color === "Copywriting" && Purple};
+`;

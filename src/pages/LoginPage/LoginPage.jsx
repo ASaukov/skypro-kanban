@@ -63,7 +63,8 @@ export const LoginPage = () => {
               <H2>Вход</H2>
             </ModalTtl>
             <ModalFormLogin onSubmit={handleLogin} id="formLogIn" action="#">
-              <ModalInput $error={error}
+              <ModalInput
+                $error={error}
                 value={formData.login}
                 onChange={handleInput}
                 type="text"
@@ -71,7 +72,8 @@ export const LoginPage = () => {
                 id="formlogin"
                 placeholder="Эл. почта"
               />
-              <ModalInput $error={error}
+              <ModalInput
+                $error={error}
                 value={formData.password}
                 onChange={handleInput}
                 type="password"
@@ -80,7 +82,12 @@ export const LoginPage = () => {
                 placeholder="Пароль"
               />
               {error && <ErrorP>{error}</ErrorP>}
-              <ModalBtnEnter $error={error} type="submit" id="btnEnter" disabled={error}>
+              <ModalBtnEnter
+                $error={error}
+                type="submit"
+                id="btnEnter"
+                disabled={error}
+              >
                 Войти
               </ModalBtnEnter>
               <ModalFormGroup>

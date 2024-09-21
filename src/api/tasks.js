@@ -19,9 +19,7 @@ export const changeTask = async (token, id, editTask) => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(
-      editTask,
-  ),
+    body: JSON.stringify(editTask),
   });
   if (!response.ok) {
     throw new Error("Не удается изменить данные");
@@ -49,7 +47,7 @@ export const getTaskId = async (token, id) => {
       Authorization: `Bearer ${token}`,
     },
   });
-  if(!response.ok) {
+  if (!response.ok) {
     throw new Error("Не удалось получить данные");
   }
   return response.json();

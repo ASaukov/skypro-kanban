@@ -16,7 +16,7 @@ export const Header = () => {
     <S.Header>
       <Container>
         <S.HeaderBlock>
-          <S.HeaderLogo >
+          <S.HeaderLogo>
             <a href="" target="_self">
               <img src="public/logo.png" alt="logo" />
             </a>
@@ -27,10 +27,10 @@ export const Header = () => {
             </a>
           </S.HeaderLogo> */}
           <S.HeaderNav>
-          <Link to={routes.newcard}>
-            <S.HeaderBtnNew id="btnMainNew">
+            <Link to={routes.newcard}>
+              <S.HeaderBtnNew id="btnMainNew">
                 Создать новую задачу
-            </S.HeaderBtnNew>
+              </S.HeaderBtnNew>
             </Link>
             <S.HeaderUser onClick={toggleOpenModul}>{user.name}</S.HeaderUser>
             {isOpen && (

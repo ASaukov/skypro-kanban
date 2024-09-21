@@ -81,7 +81,6 @@ export const ModalFormLogin = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
 
   & input:first-child {
     margin-bottom: 7px;
@@ -96,7 +95,8 @@ export const ModalInput = styled.input`
   width: 100%;
   min-width: 100%;
   border-radius: 8px;
-  border: 0.7px solid ${props => props.$error ? 'red':'rgba(148, 166, 190, 0.4)'};
+  border: 0.7px solid
+    ${(props) => (props.$error ? "red" : "rgba(148, 166, 190, 0.4)")};
   outline: none;
   padding: 10px 8px;
 
@@ -122,7 +122,7 @@ export const ModalInput = styled.input`
 export const ModalBtnEnter = styled.button`
   width: 100%;
   height: 30px;
-  background-color: ${props => props.$error ? '#94A6BE' : '#565eef'};
+  background-color: ${(props) => (props.$error ? "#94A6BE" : "#565eef")};
   border-radius: 4px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -171,11 +171,10 @@ export const ModalFormGroup = styled.div`
 `;
 
 export const ErrorP = styled.p`
-color: rgb(248, 77, 77);
-font-family: Arial;
-font-size: 12px;
-font-weight: 400;
-line-height: 150%;
-text-align: center;
-
-`
+  color: rgb(248, 77, 77);
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 150%;
+  text-align: center;
+`;

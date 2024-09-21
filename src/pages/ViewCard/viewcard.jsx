@@ -1,5 +1,5 @@
-import { PopBrowse } from "../../components/PopBrowse/popbrowse"
+import { PopBrowse } from "../../components/PopBrowse/popbrowse";
 
 export const ViewCard = () => {
-    return <PopBrowse/>
-}
+  return <PopBrowse />;
+};
