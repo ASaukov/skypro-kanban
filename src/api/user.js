@@ -9,7 +9,7 @@ export const signIn = async({login, password}) => {
         })
     });
     if(response.status === 400) {
-        throw new Error("неправильный логин или пароль")
+        throw new Error("Веденные вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа")
     }
     if(!response.ok) {
         throw new Error("Не удалось загрузить данные, попробуйте позже")

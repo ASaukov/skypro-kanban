@@ -4,7 +4,7 @@ import { routes } from "../../router/routes";
 import * as S from "./popbrowse.styled";
 
 import { useTaskContext } from "../../context/TaskContext/useTaskContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { statusList } from "../../data";
 import { changeTask, deleteTask } from "../../api/tasks";
 import { useUserContext } from "../../context/UserContext/useUserContext";
@@ -14,19 +14,32 @@ export const PopBrowse = () => {
   const { tasks, setTasks } = useTaskContext();
   const { user } = useUserContext();
   const nav = useNavigate();
-  const openTask = tasks.find(task => task._id === id);
+  let openTask = null;
+  if (tasks.length) {
+    openTask = tasks.find((task) => task._id === id);
+  }
 
-  console.log(tasks)
+  console.log(tasks);
   const [isEdit, setIsEdit] = useState(false);
-  const [selected, setSelected] = useState(new Date(openTask.date));
+  const [selected, setSelected] = useState(
+    openTask ? new Date(openTask.date) : ""
+  );
   const [error, setError] = useState("");
   const [editTask, setEditTask] = useState({
-    title: openTask.title,
-    topic: openTask.topic,
-    status: openTask.status,
-    description: openTask.description,
+    title: openTask?.title,
+    topic: openTask?.topic,
+    status: openTask?.status,
+    description: openTask?.description,
   });
 
+  useEffect(() => {
+    setEditTask({
+      title: openTask?.title,
+      topic: openTask?.topic,
+      status: openTask?.status,
+      description: openTask?.description,
+    });
+  }, [openTask]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,16 +49,17 @@ export const PopBrowse = () => {
   const editCart = async (e) => {
     e.preventDefault();
     if (editTask.description.trim() === "") {
-        setError("Заполните описание задачи");
-        return;
-      }
+      setError("Заполните описание задачи");
+      return;
+    }
     try {
-    await changeTask(user.token, id, {...editTask, date: selected},)
-    .then((res) => {
-      setTasks(res.tasks);
-      nav(routes.main);
-    })
-  } catch(error) {
+      await changeTask(user.token, id, { ...editTask, date: selected }).then(
+        (res) => {
+          setTasks(res.tasks);
+          nav(routes.main);
+        }
+      );
+    } catch (error) {
       setError(error.message);
     }
   };
@@ -67,9 +81,9 @@ export const PopBrowse = () => {
   };
 
   const onChangeDate = (e) => {
-    if(!isEdit) return
+    if (!isEdit) return;
     setSelected(e);
-  }
+  };
 
   return (
     <S.PopBrowse id="popBrowse">
@@ -128,10 +142,7 @@ export const PopBrowse = () => {
                   )}
                 </S.FormBrowseBlock>
               </S.PopBrowseForm>
-              <Calendar
-                selected={selected}
-                setSelected={onChangeDate}
-              />
+              <Calendar selected={selected} setSelected={onChangeDate} />
             </S.PopBrowseWrap>
             {!isEdit ? (
               <S.PopBrowseBtnBrowse>
@@ -168,7 +179,6 @@ export const PopBrowse = () => {
           </S.PopBrowseContent>
           {error && <S.Error>{error}</S.Error>}
         </S.PopBrowseBlock>
-        
       </S.PopBrowseContainer>
     </S.PopBrowse>
   );

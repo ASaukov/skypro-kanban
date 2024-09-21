@@ -16,16 +16,16 @@ export const Header = () => {
     <S.Header>
       <Container>
         <S.HeaderBlock>
-          <S.HeaderLogo className="_show _light">
+          <S.HeaderLogo >
             <a href="" target="_self">
               <img src="public/logo.png" alt="logo" />
             </a>
           </S.HeaderLogo>
-          <S.HeaderLogo className="_dark">
+          {/* <S.HeaderLogo className="_dark">
             <a href="" target="_self">
               <img src="public/logo_dark.png" alt="logo" />
             </a>
-          </S.HeaderLogo>
+          </S.HeaderLogo> */}
           <S.HeaderNav>
           <Link to={routes.newcard}>
             <S.HeaderBtnNew id="btnMainNew">

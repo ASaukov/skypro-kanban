@@ -13,7 +13,7 @@ import { Hover01 } from "../../globalStyle.styled";
   export const ModalBtnSignupEnt = styled.button`
     width: 100%;
     height: 30px;
-    background-color: #565EEF;
+    background-color: ${props => props.$error ? '#94A6BE' : '#565eef'};
     border-radius: 4px;
     margin-top: 20px;
     margin-bottom: 20px;

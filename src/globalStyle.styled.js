@@ -59,7 +59,7 @@ export const Container = styled.div`
 
 export const Hover01 = css`
   &:hover {
-  background-color: #33399b;
+  background-color: ${props => props.$error ? '""' : '#33399b'};
 }`
 
 export const Hover02 = css`
