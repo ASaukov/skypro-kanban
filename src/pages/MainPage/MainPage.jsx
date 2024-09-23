@@ -11,7 +11,7 @@ import { useTaskContext } from "../../context/TaskContext/useTaskContext.js";
 export const MainPage = () => {
   const { user } = useUserContext();
 
-  const {tasks, setTasks} = useTaskContext();
+  const { tasks, setTasks } = useTaskContext();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -21,7 +21,6 @@ export const MainPage = () => {
         setTasks(res.tasks);
       })
       .catch((error) => {
-        console.log(error.message);
         setError(error.message);
       })
       .finally(() => {
@@ -31,7 +30,7 @@ export const MainPage = () => {
 
   return (
     <Wrapper>
-      <Header  />
+      <Header />
       {isLoading ? <Loader>Loading...</Loader> : <Main cards={tasks} />}
       <ErrorMessage>{error}</ErrorMessage>
       <Outlet />

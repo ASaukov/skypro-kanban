@@ -5,11 +5,11 @@ export const Loader = styled.p`
   font-size: 20px;
   margin-top: 50px;
   color: darkviolet;
-`
+`;
 
 export const ErrorMessage = styled.p`
-text-align: center;
-margin-top: 100px;
-font-size: 30px;
-color: darkred;
-`
+  text-align: center;
+  margin-top: 100px;
+  font-size: 30px;
+  color: darkred;
+`;

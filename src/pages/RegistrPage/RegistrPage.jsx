@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import {
   ContainerSignin,
+  ErrorP,
   H2,
   Modal,
   ModalBlock,
@@ -30,29 +31,27 @@ export const RegistrPage = () => {
   const handleInput = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    setError("");
   };
 
   const handleRegistr = (e) => {
     e.preventDefault();
-    if (formData.login === "") {
-      setError("Введите логин");
-      return;
-    }
-    if (formData.name === "") {
-      setError("Введите имя");
-      return;
-    }
-    if (formData.password === "") {
-      setError("Введите пароль");
+    if (
+      formData.login === "" ||
+      formData.name === "" ||
+      formData.password === ""
+    ) {
+      setError(
+        "Введенные вами данные не корректны. Чтобы завершить регистрацию, заполните все поля в форме."
+      );
       return;
     }
 
     getUser(formData)
       .then((res) => {
-        console.log(res.user);
         login(res.user);
         navigate(routes.login);
-      })  
+      })
       .catch((error) => {
         setError(error.message);
       });
@@ -68,6 +67,7 @@ export const RegistrPage = () => {
             </ModalTtl>
             <ModalFormLogin onSubmit={handleRegistr} id="formLogUp" action="#">
               <ModalInput
+                $error={error}
                 value={formData.name}
                 onChange={handleInput}
                 type="text"
@@ -76,6 +76,7 @@ export const RegistrPage = () => {
                 placeholder="Имя"
               />
               <ModalInput
+                $error={error}
                 value={formData.login}
                 onChange={handleInput}
                 type="text"
@@ -84,6 +85,7 @@ export const RegistrPage = () => {
                 placeholder="Эл. почта"
               />
               <ModalInput
+                $error={error}
                 value={formData.password}
                 onChange={handleInput}
                 type="password"
@@ -91,8 +93,13 @@ export const RegistrPage = () => {
                 id="passwordFirst"
                 placeholder="Пароль"
               />
-              {error && <p>{error}</p>}
-              <ModalBtnSignupEnt onClick={handleRegistr} id="SignUpEnter">
+              {error && <ErrorP>{error}</ErrorP>}
+              <ModalBtnSignupEnt
+                $error={error}
+                disabled={error}
+                onClick={handleRegistr}
+                id="SignUpEnter"
+              >
                 Зарегистрироваться{" "}
               </ModalBtnSignupEnt>
               <ModalFormGroup>

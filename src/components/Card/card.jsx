@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom"
-import * as S from "./card.styled.js"
+import { Link } from "react-router-dom";
+import * as S from "./card.styled.js";
 import { format, isValid } from "date-fns";
 
-export const CardsItem = ({topic, title, date,id}) => {
-const dateObj = new Date(date);
-const formattedDate = isValid(dateObj) ? format(dateObj, "dd.MM.yy") : "invalid date";
+export const CardsItem = ({ topic, title, date, id }) => {
+  const dateObj = new Date(date);
+  const formattedDate = isValid(dateObj)
+    ? format(dateObj, "dd.MM.yy")
+    : "invalid date";
 
-    return (
+  return (
     <S.CardsItem>
       <S.CardsCard>
         <S.CardGroup>
@@ -59,5 +61,5 @@ const formattedDate = isValid(dateObj) ? format(dateObj, "dd.MM.yy") : "invalid 
         </S.CardContent>
       </S.CardsCard>
     </S.CardsItem>
-  )
-}
+  );
+};

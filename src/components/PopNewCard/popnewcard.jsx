@@ -6,6 +6,7 @@ import { useState } from "react";
 import { addTask } from "../../api/newTask";
 import { useTaskContext } from "../../context/TaskContext/useTaskContext";
 import { useUserContext } from "../../context/UserContext/useUserContext";
+import { ErrorP } from "../../pages/LoginPage/loginpage.styled";
 
 export const PopNewCard = () => {
   const { user } = useUserContext();
@@ -44,10 +45,10 @@ export const PopNewCard = () => {
       setError("Заполните описание задачи");
       return;
     }
-    // if (cardData.date === "") {
-    //   setError("Выберите дату");
-    //   return;
-    // }
+    if (selected === "") {
+      setError("Выберите дату");
+      return;
+    }
     await addTask(user.token, newCard)
       .then((res) => {
         setTasks(res.tasks);
@@ -96,36 +97,36 @@ export const PopNewCard = () => {
             <S.PopNewCardCategories>
               <S.CategoriesP>Категория</S.CategoriesP>
               <S.CategoriesThemes>
-                  <input
-                    onChange={handleData}
-                    type="radio"
-                    id="radio1"
-                    name="topic"
-                    value="Web Design"
-                    checked={cardData.topic === "Web Design"}
-                  />
-                  <label htmlFor="radio1">Web Design</label>
-                  <input
-                    onChange={handleData}
-                    type="radio"
-                    id="radio2"
-                    name="topic"
-                    value="Research"
-                    checked={cardData.topic === "Research"}
-                  />
-                  <label htmlFor="radio2">Research</label>
-                  <input
-                    onChange={handleData}
-                    type="radio"
-                    id="radio3"
-                    name="topic"
-                    value="Copywriting"
-                    checked={cardData.topic === "Copywriting"}
-                  />
-                  <label htmlFor="radio3">Copywriting</label>
+                <input
+                  onChange={handleData}
+                  type="radio"
+                  id="radio1"
+                  name="topic"
+                  value="Web Design"
+                  checked={cardData.topic === "Web Design"}
+                />
+                <label htmlFor="radio1">Web Design</label>
+                <input
+                  onChange={handleData}
+                  type="radio"
+                  id="radio2"
+                  name="topic"
+                  value="Research"
+                  checked={cardData.topic === "Research"}
+                />
+                <label htmlFor="radio2">Research</label>
+                <input
+                  onChange={handleData}
+                  type="radio"
+                  id="radio3"
+                  name="topic"
+                  value="Copywriting"
+                  checked={cardData.topic === "Copywriting"}
+                />
+                <label htmlFor="radio3">Copywriting</label>
               </S.CategoriesThemes>
             </S.PopNewCardCategories>
-            {error && <p>{error}</p>}
+            {error && <ErrorP>{error}</ErrorP>}
             <S.FormNewCreate onClick={handleNewCard} id="btnCreate">
               Создать задачу
             </S.FormNewCreate>

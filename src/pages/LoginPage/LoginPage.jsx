@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import {
   ContainerSignin,
+  ErrorP,
   H2,
   Modal,
   ModalBlock,
@@ -28,6 +29,7 @@ export const LoginPage = () => {
   const handleInput = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    setError("");
   };
 
   const navigate = useNavigate();
@@ -49,7 +51,6 @@ export const LoginPage = () => {
         navigate(routes.main);
       })
       .catch((error) => {
-        console.log(error.message);
         setError(error.message);
       });
   };
@@ -63,6 +64,7 @@ export const LoginPage = () => {
             </ModalTtl>
             <ModalFormLogin onSubmit={handleLogin} id="formLogIn" action="#">
               <ModalInput
+                $error={error}
                 value={formData.login}
                 onChange={handleInput}
                 type="text"
@@ -71,6 +73,7 @@ export const LoginPage = () => {
                 placeholder="Эл. почта"
               />
               <ModalInput
+                $error={error}
                 value={formData.password}
                 onChange={handleInput}
                 type="password"
@@ -78,8 +81,13 @@ export const LoginPage = () => {
                 id="formpassword"
                 placeholder="Пароль"
               />
-              {error && <p>{error}</p>}
-              <ModalBtnEnter type="submit" id="btnEnter">
+              {error && <ErrorP>{error}</ErrorP>}
+              <ModalBtnEnter
+                $error={error}
+                type="submit"
+                id="btnEnter"
+                disabled={error}
+              >
                 Войти
               </ModalBtnEnter>
               <ModalFormGroup>

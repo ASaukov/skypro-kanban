@@ -16,20 +16,20 @@ export const AppRoutes = () => {
   return (
     <UserProvider>
       <TaskProvider>
-      <BrowserRouter>
-        <Routes> 
-          <Route element={<PrivateRoute />}>
-            <Route path={routes.main} element={<MainPage />}>
-              <Route path={routes.exit} element={<ExitPage />} />
-              <Route path={routes.card} element={<ViewCard />} />
-              <Route path={routes.newcard} element={<NewCard />} />
+        <BrowserRouter>
+          <Routes>
+            <Route element={<PrivateRoute />}>
+              <Route path={routes.main} element={<MainPage />}>
+                <Route path={routes.exit} element={<ExitPage />} />
+                <Route path={routes.card} element={<ViewCard />} />
+                <Route path={routes.newcard} element={<NewCard />} />
+              </Route>
             </Route>
-          </Route>
-          <Route path={routes.login} element={<LoginPage />} />
-          <Route path={routes.registr} element={<RegistrPage />} />
-          <Route path={routes.notFound} element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path={routes.login} element={<LoginPage />} />
+            <Route path={routes.registr} element={<RegistrPage />} />
+            <Route path={routes.notFound} element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
       </TaskProvider>
     </UserProvider>
   );

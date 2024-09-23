@@ -1,5 +1,5 @@
-import { PopNewCard } from "../../components/PopNewCard/popnewcard"
+import { PopNewCard } from "../../components/PopNewCard/popnewcard";
 
 export const NewCard = () => {
-    return <PopNewCard/>
-}
+  return <PopNewCard />;
+};
