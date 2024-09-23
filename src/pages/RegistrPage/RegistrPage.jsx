@@ -49,7 +49,6 @@ export const RegistrPage = () => {
 
     getUser(formData)
       .then((res) => {
-        console.log(res.user);
         login(res.user);
         navigate(routes.login);
       })

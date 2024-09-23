@@ -1,9 +1,3 @@
-//   div,
-//   button,
-//   a {
-//     font-family: "Roboto", sans-serif;
-//   }
-
 import styled from "styled-components";
 import { Hover01 } from "../../globalStyle.styled";
 

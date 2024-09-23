@@ -6,6 +6,7 @@ import { useState } from "react";
 import { addTask } from "../../api/newTask";
 import { useTaskContext } from "../../context/TaskContext/useTaskContext";
 import { useUserContext } from "../../context/UserContext/useUserContext";
+import { ErrorP } from "../../pages/LoginPage/loginpage.styled";
 
 export const PopNewCard = () => {
   const { user } = useUserContext();
@@ -44,10 +45,10 @@ export const PopNewCard = () => {
       setError("Заполните описание задачи");
       return;
     }
-    // if (cardData.date === "") {
-    //   setError("Выберите дату");
-    //   return;
-    // }
+    if (selected === "") {
+      setError("Выберите дату");
+      return;
+    }
     await addTask(user.token, newCard)
       .then((res) => {
         setTasks(res.tasks);
@@ -125,7 +126,7 @@ export const PopNewCard = () => {
                 <label htmlFor="radio3">Copywriting</label>
               </S.CategoriesThemes>
             </S.PopNewCardCategories>
-            {error && <p>{error}</p>}
+            {error && <ErrorP>{error}</ErrorP>}
             <S.FormNewCreate onClick={handleNewCard} id="btnCreate">
               Создать задачу
             </S.FormNewCreate>

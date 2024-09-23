@@ -21,7 +21,6 @@ export const MainPage = () => {
         setTasks(res.tasks);
       })
       .catch((error) => {
-        console.log(error.message);
         setError(error.message);
       })
       .finally(() => {

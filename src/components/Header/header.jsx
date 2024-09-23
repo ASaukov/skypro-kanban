@@ -18,14 +18,9 @@ export const Header = () => {
         <S.HeaderBlock>
           <S.HeaderLogo>
             <a href="" target="_self">
-              <img src="public/logo.png" alt="logo" />
+              <img src="logo.png" alt="logo" />
             </a>
           </S.HeaderLogo>
-          {/* <S.HeaderLogo className="_dark">
-            <a href="" target="_self">
-              <img src="public/logo_dark.png" alt="logo" />
-            </a>
-          </S.HeaderLogo> */}
           <S.HeaderNav>
             <Link to={routes.newcard}>
               <S.HeaderBtnNew id="btnMainNew">
@@ -37,10 +32,6 @@ export const Header = () => {
               <S.HeaderPopUser id="user-set-target">
                 <S.PopUserName>{user.name}</S.PopUserName>
                 <S.PopUserMail>{user.login}</S.PopUserMail>
-                {/* <S.PopUserTheme>
-                  <p>Темная тема</p>
-                  <input type="checkbox" className="checkbox" name="checkbox" />
-                </S.PopUserTheme> */}
                 <S.HeaderBtnExit type="button">
                   <Link to={routes.exit}>Выйти</Link>
                 </S.HeaderBtnExit>

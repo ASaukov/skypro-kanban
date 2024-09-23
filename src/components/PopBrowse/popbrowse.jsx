@@ -19,7 +19,6 @@ export const PopBrowse = () => {
     openTask = tasks.find((task) => task._id === id);
   }
 
-  console.log(tasks);
   const [isEdit, setIsEdit] = useState(false);
   const [selected, setSelected] = useState(
     openTask ? new Date(openTask.date) : ""
@@ -136,7 +135,6 @@ export const PopBrowse = () => {
                       onChange={handleChange}
                       name="description"
                       value={editTask.description}
-                      // readOnly={!isEdit}
                       placeholder="Введите описание задачи..."
                     ></S.FormBrowseAreaEdit>
                   )}
